@@ -9,6 +9,7 @@
 <title>CORTEX FUSION Z // Engineering Tomorrow</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script type="text/javascript">
@@ -590,6 +591,14 @@ footer p{color:#5f6b79;margin-top:8px}
 .auth-footer{display:flex;justify-content:space-between;gap:15px;margin-top:22px}.auth-footer a{color:var(--cyan);text-decoration:none;font-size:12px}
 .social-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.social-links a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(0,234,255,.16);border-radius:7px;color:#9aa8b7;text-decoration:none;font:800 11px monospace;letter-spacing:1px;transition:.2s;background:rgba(0,234,255,.02)}.social-links a:hover{color:#fff;border-color:var(--cyan);box-shadow:0 0 20px rgba(0,234,255,.12);transform:translateY(-2px)}
 
+.field-error{display:block;color:#ff5470;font:700 11px monospace;letter-spacing:.3px;margin:-9px 0 12px;min-height:14px}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:22px 0 16px;color:var(--muted);font:800 11px monospace;letter-spacing:1.5px}
+.auth-divider:before,.auth-divider:after{content:"";flex:1;height:1px;background:rgba(255,255,255,.1)}
+.google-auth-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border:1px solid rgba(0,234,255,.28);background:rgba(0,234,255,.04);color:#fff;border-radius:6px;font:800 13px Arial,sans-serif;cursor:pointer;transition:.25s;letter-spacing:.4px}
+.google-auth-btn:hover{background:rgba(0,234,255,.1);border-color:var(--cyan);box-shadow:0 0 20px rgba(0,234,255,.15);transform:translateY(-1px)}
+.google-g-icon{width:18px;height:18px;flex-shrink:0}
+
+
 .profile-layout{display:grid;grid-template-columns:320px 1fr;gap:28px;max-width:1050px;margin:auto;}
 .profile-card{
   padding:35px 22px;text-align:center;
@@ -807,6 +816,20 @@ footer p{color:#5f6b79;margin-top:8px}
   transition:.2s;
 }
 .brahma-close:hover{background:#ffaa30;color:#000;box-shadow:0 0 20px rgba(255,170,48,.45)}
+.brahma-guide-btn{
+  position:absolute;left:20px;top:16px;
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 14px;border-radius:10px;
+  border:1px solid rgba(0,234,255,.4);
+  background:rgba(0,234,255,.06);
+  color:#00eaff;font:800 11px monospace;letter-spacing:.6px;
+  cursor:pointer;text-decoration:none;transition:.25s;
+  z-index:2;
+}
+.brahma-guide-btn:hover{background:#00eaff;color:#000;box-shadow:0 0 20px rgba(0,234,255,.4);transform:translateY(-1px)}
+@media(max-width:600px){
+  .brahma-guide-btn{position:static;margin-bottom:14px;justify-content:center;width:100%}
+}
 .brahma-modal-tag{
   text-align:center;color:#ffaa30;font:800 11px monospace;
   letter-spacing:3px;margin-bottom:10px;
@@ -879,6 +902,12 @@ footer p{color:#5f6b79;margin-top:8px}
   .brahma-modal-card{padding:30px 18px}
 }
 
+
+.google-btn-shell{position:relative;width:100%;height:44px;margin-top:0}
+.google-btn-shell .google-auth-btn{width:100%;height:44px;margin:0}
+.google-gis-overlay{position:absolute;inset:0;z-index:5;opacity:0;overflow:hidden;border-radius:6px}
+.google-gis-overlay>div{width:100%!important;height:100%!important}
+.google-gis-overlay iframe{width:100%!important;height:100%!important}
 </style>
 </head>
 <body>
@@ -912,6 +941,7 @@ footer p{color:#5f6b79;margin-top:8px}
 <!-- BRAHMA ECHO SUBSCRIPTION MODAL -->
 <div class="brahma-modal-overlay" id="brahma-echo-modal" onclick="closeBrahmaEchoOnBackdrop(event)">
   <div class="brahma-modal-card">
+    <a class="brahma-guide-btn" href="https://www.youtube.com/watch?v=clhoBUzOBpI" target="_blank" rel="noopener noreferrer">▶ FEATURE SHOWCASE &amp; USER GUIDE</a>
     <button class="brahma-close" onclick="closeBrahmaEchoModal()" aria-label="Close">✕</button>
     <div class="brahma-modal-tag">// BRAHMA ECHO AI</div>
     <div class="brahma-modal-title">ENTER THE <span>BRAHMA ECHO</span></div>
@@ -1729,7 +1759,7 @@ const pages = {
       </div>
     </div>
   </div>${getReviewSectionHTML()}`,
-  signin: `<div class="auth-wrap"><div class="auth-card"><div class="auth-tabs"><button class="auth-tab active" data-auth="login">LOG IN</button><button class="auth-tab" data-auth="signup">SIGN UP</button></div><div id="login-box"><div class="tag">[ CORTEX FUSION Z IDENTITY SYSTEM ]</div><h1>Welcome <span>Back.</span></h1><p>Log in to access your Cortex Fusion Z profile.</p><form id="login"><label>USERNAME OR EMAIL</label><input id="login-id" type="text" placeholder="Username or email" required><label>PASSWORD</label><div class="password-wrap"><input id="login-password" type="password" placeholder="••••••••" required><button type="button" class="show-pass" onclick="togglePass('login-password')">SHOW</button></div><button type="submit" class="auth-btn">LOG IN →</button></form></div><div id="signup-box" style="display:none"><div class="tag">[ CORTEX FUSION Z IDENTITY SYSTEM ]</div><h1>Create <span>Account.</span></h1><p>Join Cortex Fusion Z today.</p><form id="signup"><label>USERNAME</label><input id="sig-user" type="text" placeholder="Username" required><label>EMAIL</label><input id="sig-email" type="email" placeholder="name@example.com" required><label>PHONE NUMBER</label><input id="sig-phone" type="tel" placeholder="+91..." required><label>PASSWORD</label><div class="password-wrap"><input id="sig-password" type="password" placeholder="••••••••" required><button type="button" class="show-pass" onclick="togglePass('sig-password')">SHOW</button></div><button type="submit" class="auth-btn">JOIN NOW →</button></form></div><div id="auth-msg" class="auth-msg"></div></div></div>`,
+  signin: `<div class="auth-wrap"><div class="auth-card"><div class="auth-tabs"><button class="auth-tab active" data-auth="login">LOG IN</button><button class="auth-tab" data-auth="signup">SIGN UP</button></div><div id="login-box"><div class="tag">[ CORTEX FUSION Z IDENTITY SYSTEM ]</div><h1>Welcome <span>Back.</span></h1><p>Log in to access your Cortex Fusion Z profile.</p><form id="login"><label>USERNAME OR EMAIL</label><input id="login-id" type="text" placeholder="Username or email" required><label>PASSWORD</label><div class="password-wrap"><input id="login-password" type="password" placeholder="••••••••" required><button type="button" class="show-pass" onclick="togglePass('login-password')">SHOW</button></div><button type="submit" class="auth-btn">LOG IN →</button></form><div class="auth-divider"><span>OR</span></div><div class="google-btn-shell"><button type="button" class="google-auth-btn" id="login-google-btn"><svg class="google-g-icon" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>Continue with Google</button><div id="google-login-overlay" class="google-gis-overlay"></div></div></div><div id="signup-box" style="display:none"><div class="tag">[ CORTEX FUSION Z IDENTITY SYSTEM ]</div><h1>Create <span>Account.</span></h1><p>Join Cortex Fusion Z today.</p><form id="signup"><label>USERNAME</label><input id="sig-user" type="text" placeholder="Username" required><label>EMAIL</label><input id="sig-email" type="email" placeholder="name@example.com" required><small id="sig-email-err" class="field-error"></small><label>PHONE NUMBER</label><input id="sig-phone" type="tel" placeholder="10-digit mobile number" maxlength="10" required><small id="sig-phone-err" class="field-error"></small><label>PASSWORD</label><div class="password-wrap"><input id="sig-password" type="password" placeholder="••••••••" required><button type="button" class="show-pass" onclick="togglePass('sig-password')">SHOW</button></div><label>RETYPE PASSWORD</label><div class="password-wrap"><input id="sig-password2" type="password" placeholder="••••••••" required><button type="button" class="show-pass" onclick="togglePass('sig-password2')">SHOW</button></div><small id="sig-password-err" class="field-error"></small><button type="submit" class="auth-btn">JOIN NOW →</button></form><div class="auth-divider"><span>OR</span></div><div class="google-btn-shell"><button type="button" class="google-auth-btn" id="signup-google-btn"><svg class="google-g-icon" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>Sign up with Google</button><div id="google-signup-overlay" class="google-gis-overlay"></div></div></div><div id="auth-msg" class="auth-msg"></div></div></div>`,
   profile: `<div class="page"><div class="tag">CORTEX FUSION Z // PERSONALIZATION HUB</div><h1>User <span>Profile.</span></h1><p class="intro">Manage your personal details, custom avatar, and personalized network settings.</p><div class="profile-layout"><div class="profile-card"><div class="profile-avatar-container"><div class="profile-avatar-ring"></div><div id="profile-photo-preview" class="profile-photo">CFX</div></div><label class="custom-file profile-upload" for="profile-photo">📷 CHANGE AVATAR</label><input id="profile-photo" type="file" accept="image/*" style="display:none"><div id="welcome-preview" class="welcome-preview">Welcome User</div><div class="cyber-badge-container"><div class="cyber-badge">STATUS: <span>ONLINE 🟢</span></div><div class="cyber-badge">CLEARANCE: <span style="color:var(--cyan)">LEVEL ALPHA ⚡</span></div></div></div><div class="profile-form-panel"><h2><span>⚡</span> EDIT IDENTITY SETTINGS</h2><div class="profile-field-group"><label>// USERNAME</label><input id="profile-username" type="text" placeholder="Username"></div><div class="profile-field-group"><label>// EMAIL ADDRESS</label><input id="profile-email" type="email" placeholder="Email"></div><div class="profile-field-group"><label>// PHONE NUMBER</label><input id="profile-phone" type="tel" placeholder="+91..."></div><div class="profile-btn-grid"><button id="save-profile" class="save-profile-btn" type="button">SAVE PERSONALIZATION</button><button id="logout" class="logout-btn" type="button">LOG OUT</button></div><div id="profile-msg" class="auth-msg"></div></div></div></div>`
 };
 
@@ -1770,11 +1800,19 @@ function route(){
   window.scrollTo(0,0);
 }
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const PHONE_RE = /^\d{10}$/;
+
+function setFieldError(id, msg){
+  const el = document.getElementById(id);
+  if(el) el.textContent = msg || "";
+}
+
 function initAuth(){
   const tabs=document.querySelectorAll(".auth-tab");
   const lBox=document.getElementById("login-box");
   const sBox=document.getElementById("signup-box");
-  
+
   tabs.forEach(t=>t.onclick=()=>{
     tabs.forEach(x=>x.classList.remove("active"));
     t.classList.add("active");
@@ -1787,7 +1825,7 @@ function initAuth(){
     e.preventDefault();
     const id = document.getElementById("login-id").value.trim();
     const pass = document.getElementById("login-password").value;
-    
+
     let accounts = JSON.parse(localStorage.getItem("cortexfusionz_accounts") || "[]");
     let found = accounts.find(acc => (acc.username === id || acc.email === id));
 
@@ -1813,13 +1851,40 @@ function initAuth(){
   const sForm=document.getElementById("signup");
   if(sForm) sForm.onsubmit=(e)=>{
     e.preventDefault();
+    setFieldError("sig-email-err","");
+    setFieldError("sig-phone-err","");
+    setFieldError("sig-password-err","");
+
     const u = document.getElementById("sig-user").value.trim();
     const em = document.getElementById("sig-email").value.trim();
     const ph = document.getElementById("sig-phone").value.trim();
     const pw = document.getElementById("sig-password").value;
+    const pw2 = document.getElementById("sig-password2").value;
+
+    let hasError = false;
+
+    if(!EMAIL_RE.test(em)){
+      setFieldError("sig-email-err","⚠️ Please enter a correct email address (e.g. name@example.com).");
+      toast("❌ ENTER A CORRECT EMAIL ADDRESS");
+      hasError = true;
+    }
+
+    if(!PHONE_RE.test(ph)){
+      setFieldError("sig-phone-err","⚠️ Phone number must be exactly 10 digits.");
+      if(!hasError) toast("❌ PHONE NUMBER MUST BE 10 DIGITS");
+      hasError = true;
+    }
+
+    if(pw !== pw2){
+      setFieldError("sig-password-err","⚠️ Passwords do not match. Please retype.");
+      if(!hasError) toast("❌ PASSWORDS DO NOT MATCH");
+      hasError = true;
+    }
+
+    if(hasError) return;
 
     let accounts = JSON.parse(localStorage.getItem("cortexfusionz_accounts") || "[]");
-    
+
     let existing = accounts.find(acc => acc.username === u || acc.email === em);
     if (existing) {
       toast("⚠️ ACCOUNT ALREADY EXISTS. PLEASE LOG IN.");
@@ -1834,12 +1899,114 @@ function initAuth(){
     const newAccount = { username: u, email: em, phone: ph, password: pw, loggedIn: true };
     accounts.push(newAccount);
     localStorage.setItem("cortexfusionz_accounts", JSON.stringify(accounts));
-    
+
     setUser(newAccount);
     toast("ACCOUNT CREATED & REGISTERED");
     setTimeout(() => location.hash = "#profile", 500);
   };
+
+  const phoneField = document.getElementById("sig-phone");
+  if(phoneField) phoneField.oninput = () => { phoneField.value = phoneField.value.replace(/\D/g,"").slice(0,10); };
+
+  initGoogleIdentityServices();
 }
+
+/* ---------- Google Sign up / Log in — Official Google Identity Services ---------- */
+const GOOGLE_CLIENT_ID = "91875337706-929kp32g2ht97kdq0pgru5f1ntvhvcq5.apps.googleusercontent.com";
+let googleGISReady = false;
+let googleGISInitialized = false;
+
+function decodeGoogleJWT(token){
+  try{
+    const part = String(token || '').split('.')[1];
+    if(!part) return null;
+    const base64 = part.replace(/-/g,'+').replace(/_/g,'/');
+    const padded = base64 + '='.repeat((4 - base64.length % 4) % 4);
+    return JSON.parse(decodeURIComponent(atob(padded).split('').map(c => '%' + ('00'+c.charCodeAt(0).toString(16)).slice(-2)).join('')));
+  }catch(e){ return null; }
+}
+
+function handleGoogleCredentialResponse(response){
+  const data = decodeGoogleJWT(response && response.credential);
+  if(!data || !data.email){
+    toast("❌ GOOGLE SIGN-IN RESPONSE COULD NOT BE READ");
+    return;
+  }
+  completeGoogleSignIn(data.email, data.name || data.email.split('@')[0], data.picture || '');
+}
+
+function initGoogleIdentityServices(){
+  const waitForGIS = () => {
+    if(!window.google || !google.accounts || !google.accounts.id){
+      setTimeout(waitForGIS, 100);
+      return;
+    }
+    if(googleGISInitialized) return;
+    googleGISInitialized = true;
+    google.accounts.id.initialize({
+      client_id: GOOGLE_CLIENT_ID,
+      callback: handleGoogleCredentialResponse,
+      auto_select: false,
+      cancel_on_tap_outside: true,
+      use_fedcm_for_prompt: true
+    });
+    googleGISReady = true;
+
+    const loginHost = document.getElementById('google-login-overlay');
+    const signupHost = document.getElementById('google-signup-overlay');
+    const opts = {
+      type: 'standard',
+      theme: 'outline',
+      size: 'large',
+      text: 'signin_with',
+      shape: 'rectangular',
+      logo_alignment: 'left',
+      width: 400
+    };
+    if(loginHost) google.accounts.id.renderButton(loginHost, opts);
+    if(signupHost) google.accounts.id.renderButton(signupHost, opts);
+  };
+  waitForGIS();
+}
+
+function completeGoogleSignIn(email, name, picture){
+  email = String(email || '').trim().toLowerCase();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+    toast("❌ INVALID GOOGLE ACCOUNT");
+    return;
+  }
+
+  let accounts = JSON.parse(localStorage.getItem("cortexfusionz_accounts") || "[]");
+  let found = accounts.find(acc => String(acc.email || '').toLowerCase() === email);
+  const username = String(name || email.split('@')[0]).trim() || email.split('@')[0];
+
+  if(found){
+    found.username = found.username || username;
+    if(picture) found.googlePicture = picture;
+    found.loggedIn = true;
+    found.viaGoogle = true;
+    localStorage.setItem("cortexfusionz_accounts", JSON.stringify(accounts));
+    setUser(found);
+    toast("LOGIN SUCCESSFUL VIA GOOGLE");
+  } else {
+    const newAccount = {
+      username: username,
+      email: email,
+      phone: "",
+      password: "",
+      loggedIn: true,
+      viaGoogle: true,
+      googlePicture: picture || ""
+    };
+    accounts.push(newAccount);
+    localStorage.setItem("cortexfusionz_accounts", JSON.stringify(accounts));
+    setUser(newAccount);
+    toast("ACCOUNT CREATED VIA GOOGLE");
+  }
+
+  setTimeout(() => location.hash = "#profile", 400);
+}
+
 
 function initProfile(){
   const u=getUser();
@@ -1853,6 +2020,8 @@ function initProfile(){
   const prev=document.getElementById("welcome-preview");
   const pPhoto=document.getElementById("profile-photo-preview");
   const fileIn=document.getElementById("profile-photo");
+  const currentUser=getUser();
+  if(pPhoto && currentUser && currentUser.googlePicture){ pPhoto.innerHTML=`<img src="${esc(currentUser.googlePicture)}" alt="Google profile" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`; }
 
   if(uIn) uIn.value=u.username||"";
   if(eIn) eIn.value=u.email||"";
