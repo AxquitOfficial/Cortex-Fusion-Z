@@ -109,6 +109,23 @@ nav{
 }
 .header-cart-btn:hover { background: var(--cyan); color: #000; box-shadow: 0 0 20px rgba(0,234,255,0.4); }
 
+/* ===== HUD MOBILE NAV (hamburger) — hidden on laptop, only active <=850px ===== */
+.nav-toggle{
+  display:none; width:40px; height:40px; margin-left:10px;
+  border:1px solid var(--cyan); border-radius:7px; background:rgba(0,234,255,.06);
+  cursor:pointer; flex-shrink:0; position:relative; z-index:1201;
+  align-items:center; justify-content:center; flex-direction:column; gap:5px;
+}
+.nav-toggle span{ display:block; width:19px; height:2px; background:var(--cyan); box-shadow:0 0 6px rgba(0,234,255,.6); transition:.28s; }
+.nav-toggle.active{ border-color:var(--red); background:rgba(255,22,61,.08); }
+.nav-toggle.active span{ background:var(--red); }
+.nav-toggle.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2){ opacity:0; }
+.nav-toggle.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+.nav-overlay{ display:none; position:fixed; inset:0; z-index:1090; background:rgba(3,5,7,.72); backdrop-filter:blur(5px); }
+.nav-overlay.active{ display:block; animation:brahmaFadeIn .2s ease; }
+.nav-links-mobile-only{ display:none; }
+
 .founder-hero-badge {
   display: inline-flex; align-items: center; gap: 12px; margin: 22px 0; padding: 12px 28px;
   background: linear-gradient(135deg, rgba(0,234,255,0.12), rgba(255,0,60,0.12));
@@ -550,7 +567,27 @@ footer p{color:#5f6b79;margin-top:8px}
 
 @keyframes pulse{50%{transform:scale(1.07);opacity:.65}}
 @media(max-width:850px){
- .nav-links{display:none}
+ nav{padding:0 16px}
+ .nav-toggle{display:flex}
+ .nav-desktop-only{display:none}
+ .nav-links-mobile-only{display:block}
+ .nav-links{
+   display:flex; flex-direction:column; align-items:stretch; gap:0;
+   position:fixed; top:0; right:-88%; width:82%; max-width:320px; height:100vh;
+   margin:0; padding:96px 26px 30px; overflow-y:auto; z-index:1100;
+   background:linear-gradient(165deg,rgba(8,12,18,.98),rgba(3,5,7,.99));
+   border-left:1px solid var(--cyan);
+   box-shadow:-10px 0 50px rgba(0,0,0,.6), inset 0 0 40px rgba(0,234,255,.04);
+   transition:right .32s cubic-bezier(.4,0,.2,1);
+ }
+ .nav-links.active{ right:0; }
+ .nav-links li{ border-bottom:1px solid rgba(0,234,255,.12); }
+ .nav-links a{
+   display:block; padding:16px 4px; font-size:15px; letter-spacing:1.5px;
+   font-weight:800; color:#dbe4ee;
+ }
+ .nav-links a:hover{ color:var(--cyan); padding-left:10px; }
+ .nav-links .brahma-nav-btn{ margin:0; display:block; padding:16px 4px; }
  .hero h1{letter-spacing:-3px}.hero:before{width:340px;height:340px}
  .stats{grid-template-columns:1fr}
  .section-title h2,.cta h2{font-size:35px}
@@ -930,6 +967,81 @@ footer p{color:#5f6b79;margin-top:8px}
   .feedback-float{right:15px;bottom:18px;padding:11px 16px;font-size:11px}
 }
 
+/* ===================================================================
+   HUD GUI — PERFECT-FIT PHONE LAYER
+   Everything below only fires under the breakpoints; laptop HUD is
+   untouched above 850px.
+=================================================================== */
+@media(max-width:850px){
+  nav{height:66px}
+  .logo{gap:7px;font-size:17px;letter-spacing:1px}
+  .logo-icon-wrap{width:32px;height:32px}
+  .logo-x-badge{padding:1px 6px;font-size:15px}
+  .header-cart-btn{padding:8px 11px;font-size:11px;margin-right:6px;gap:5px}
+  .signin,.btn{padding:9px 13px;font-size:12px}
+  .hero{padding:120px 18px 70px}
+  .founder-hero-badge{padding:9px 16px;gap:8px;margin:16px 0}
+  .founder-hero-title{font-size:10px}
+  .founder-hero-name{font-size:16px}
+  .tag{font-size:10px;padding:6px 11px}
+  .hero p{font-size:15px;margin:20px auto}
+  section{padding:70px 5%}
+  .section-title h2{font-size:30px}
+  .section-title p{font-size:13px}
+  .products{gap:16px}
+  .product-image{height:165px;font-size:56px}
+  .card-content{padding:18px}
+  .card-content h3{font-size:18px}
+  .stat{padding:22px}
+  .stat h3{font-size:34px}
+  .cta{padding:48px 20px}
+  .cta h2{font-size:26px}
+  .contact-container{gap:16px}
+  .contact-card{padding:22px}
+  .page{padding:120px 18px 60px}
+  .auth-wrap{padding:100px 16px 50px}
+  .auth-card{padding:26px 22px}
+  .auth-card h1{font-size:28px}
+  .profile-card,.profile-form-panel{padding:24px 18px}
+  .cyber-modal-card,.brahma-modal-card{padding:22px 16px}
+  .price-box{padding:15px}
+  .price-value{font-size:22px}
+  #ask-cortex-widget{bottom:18px;left:14px}
+  .cortex-floating-btn{padding:10px 15px;font-size:11px}
+  .cortex-chat-box{width:min(320px,86vw);bottom:52px}
+  .feedback-float{padding:10px 14px;font-size:10px;gap:6px}
+  .toast{right:12px;left:12px;bottom:82px;max-width:none;font-size:12px;padding:13px 16px}
+  .brahma-session-badge{right:12px;bottom:150px;font-size:11px;padding:10px 14px}
+}
+
+@media(max-width:600px){
+  .header-cart-btn .cart-btn-text{display:none}
+  .header-cart-btn{padding:8px 10px}
+  .signin{padding:9px 11px;font-size:11px}
+  .hero h1{letter-spacing:-2px}
+  .buttons{gap:10px}
+  .buttons .btn{flex:1 1 auto;text-align:center}
+  .products{grid-template-columns:1fr}
+  .brahma-plans{gap:14px}
+  .profile-btn-grid{grid-template-columns:1fr}
+  .cart-layout-grid{gap:14px}
+  .cart-items-column{max-height:290px}
+}
+
+@media(max-width:420px){
+  nav{padding:0 12px;height:60px}
+  .logo-text{display:none}
+  .logo-x-badge{margin-left:-2px}
+  .hero{padding:105px 14px 60px}
+  .hero h1{font-size:clamp(42px,13vw,58px);letter-spacing:-2px}
+  .founder-hero-name{font-size:14px}
+  .section-title h2{font-size:25px}
+  .cta h2{font-size:22px}
+  .auth-card{padding:22px 16px}
+  .contact-card{padding:18px}
+  #ask-cortex-widget{left:10px;bottom:14px}
+  .cortex-chat-box{width:min(300px,88vw)}
+}
 </style>
 </head>
 <body>
@@ -944,20 +1056,25 @@ footer p{color:#5f6b79;margin-top:8px}
       <span class="logo-text">CORTEX FUSION</span>
       <span class="logo-x-badge">Z</span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="#home" data-page="home">HOME</a></li>
       <li><a href="#products" data-page="products">PRODUCTS</a></li>
       <li><a href="#futureiot" data-page="futureiot">FUTURE IOT</a></li>
       <li><a href="#about" data-page="about">ABOUT</a></li>
       <li><a href="#contact" data-page="contact">CONTACT US</a></li>
+      <li class="nav-links-mobile-only"><a href="javascript:void(0)" class="brahma-nav-btn" onclick="openBrahmaEchoModal();closeMobileNav();">BRAHMA ECHO</a></li>
     </ul>
     <div style="display:flex; align-items:center;">
-      <a href="javascript:void(0)" class="brahma-nav-btn" onclick="openBrahmaEchoModal()">BRAHMA ECHO</a>
-      <button class="header-cart-btn" onclick="openCartModal()">🛒 CART (<span id="cart-count">0</span>)</button>
+      <a href="javascript:void(0)" class="brahma-nav-btn nav-desktop-only" onclick="openBrahmaEchoModal()">BRAHMA ECHO</a>
+      <button class="header-cart-btn" onclick="openCartModal()">🛒 <span class="cart-btn-text">CART </span>(<span id="cart-count">0</span>)</button>
       <a class="signin" id="nav-auth" href="#signin" data-page="signin">SIGN UP</a>
+      <button class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 </header>
+<div class="nav-overlay" id="nav-overlay" onclick="closeMobileNav()"></div>
 
 
 <!-- BRAHMA ECHO SUBSCRIPTION MODAL -->
@@ -2088,8 +2205,26 @@ function updateNav(){
   else{a.href="#signin";a.dataset.page="signin";a.textContent="SIGN UP";}
 }
 
-window.addEventListener("hashchange",()=>{route();updateNav();});
+window.addEventListener("hashchange",()=>{route();updateNav();closeMobileNav();});
 route();updateNav();updateCartBadge();
+
+function toggleMobileNav(){
+  const links=document.getElementById("nav-links"),ov=document.getElementById("nav-overlay"),btn=document.getElementById("nav-toggle");
+  if(!links)return;
+  const isOpen=links.classList.toggle("active");
+  if(ov)ov.classList.toggle("active",isOpen);
+  if(btn){btn.classList.toggle("active",isOpen);btn.setAttribute("aria-expanded",isOpen?"true":"false");}
+  document.body.style.overflow=isOpen?"hidden":"";
+}
+function closeMobileNav(){
+  const links=document.getElementById("nav-links"),ov=document.getElementById("nav-overlay"),btn=document.getElementById("nav-toggle");
+  if(links)links.classList.remove("active");
+  if(ov)ov.classList.remove("active");
+  if(btn){btn.classList.remove("active");btn.setAttribute("aria-expanded","false");}
+  document.body.style.overflow="";
+}
+addEventListener("resize",()=>{ if(innerWidth>850) closeMobileNav(); });
+document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeMobileNav(); });
 </script>
 
 <script>
