@@ -1047,7 +1047,7 @@ footer p{color:#5f6b79;margin-top:8px}
 @media(max-width:850px){nav{height:68px;padding:0 14px}.nav-toggle{display:flex;width:44px;height:44px;margin-left:8px;border-radius:9px;flex-shrink:0}.nav-toggle span{width:21px;height:2px}.nav-links{display:flex;flex-direction:column;align-items:stretch;gap:0;position:fixed;top:68px;left:0;right:auto;width:100%;max-width:none;height:calc(100vh - 68px);margin:0;padding:12px 18px 35px;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:1100;background:linear-gradient(180deg,rgba(5,9,14,.99),rgba(3,5,7,.99));border-left:0;border-top:1px solid rgba(0,234,255,.25);box-shadow:0 15px 40px rgba(0,0,0,.55);transform:translateX(100%);transition:transform .28s ease}.nav-links.active{transform:translateX(0)}.nav-overlay,.nav-overlay.active{display:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:transparent!important}.nav-links li{border-bottom:1px solid rgba(0,234,255,.12)}.nav-links a{display:flex;align-items:center;min-height:58px;padding:16px 8px;font-size:16px;letter-spacing:1.4px;font-weight:800;color:#e8eef5}.nav-links a:hover{color:var(--cyan);padding-left:14px}.nav-links .brahma-nav-btn{display:flex;align-items:center;min-height:58px;padding:16px 8px;margin:0}.nav-links-mobile-only{display:block}.hero{padding:115px 18px 70px}.hero h1{letter-spacing:-3px}}
 @media(max-width:600px){nav{height:64px;padding:0 12px}.nav-links{top:64px;height:calc(100vh - 64px);padding:8px 15px 30px}.nav-links a,.nav-links .brahma-nav-btn{min-height:56px;padding:15px 8px;font-size:15px}.nav-toggle{width:42px;height:42px}.header-cart-btn{padding:8px 10px;margin-right:4px}.signin{padding:9px 11px;font-size:11px}}
 @media(max-width:420px){nav{padding:0 9px}.logo-text{display:none}.logo{gap:6px}.logo-icon-wrap{width:32px;height:32px}.logo-x-badge{margin-left:0;padding:1px 6px;font-size:15px}.header-cart-btn{padding:7px 9px}.signin{padding:8px 9px;font-size:10px}.nav-toggle{margin-left:5px;width:40px;height:40px}}
-.freelapsing-card{position:relative;overflow:hidden;border:1px solid rgba(255,170,48,.35);background:radial-gradient(circle at 90% 10%,rgba(255,170,48,.14),transparent 38%),linear-gradient(145deg,rgba(20,18,14,.94),rgba(5,8,12,.96))}.freelapsing-card:hover{border-color:#ffaa30;box-shadow:0 0 35px rgba(255,170,48,.22),inset 0 0 25px rgba(255,170,48,.04);transform:translateY(-7px)}.freelapsing-icon{color:#ffaa30;background:rgba(255,170,48,.08);border-color:rgba(255,170,48,.3);box-shadow:0 0 20px rgba(255,170,48,.12)}.freelapsing-card h3{color:#fff}.freelapsing-extra{color:#bfc9d5!important;font-size:12px!important;line-height:1.8!important;padding:12px;border:1px solid rgba(255,170,48,.15);border-radius:9px;background:rgba(255,170,48,.035)}.freelapsing-btn{border:1px solid #ffaa30;color:#ffaa30;background:rgba(255,170,48,.06);box-shadow:0 0 15px rgba(255,170,48,.08)}.freelapsing-btn:hover{background:#ffaa30;color:#000;box-shadow:0 0 25px rgba(255,170,48,.4)}.freelapsing-note{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,170,48,.15);color:#8995a4;font-size:12px;line-height:1.7}.freelapsing-note strong{color:#ffaa30;font-family:monospace;letter-spacing:1px}
+.freelancing-card{position:relative;overflow:hidden;border:1px solid rgba(255,170,48,.35);background:radial-gradient(circle at 90% 10%,rgba(255,170,48,.14),transparent 38%),linear-gradient(145deg,rgba(20,18,14,.94),rgba(5,8,12,.96))}.freelancing-card:hover{border-color:#ffaa30;box-shadow:0 0 35px rgba(255,170,48,.22),inset 0 0 25px rgba(255,170,48,.04);transform:translateY(-7px)}.freelancing-icon{color:#ffaa30;background:rgba(255,170,48,.08);border-color:rgba(255,170,48,.3);box-shadow:0 0 20px rgba(255,170,48,.12)}.freelancing-card h3{color:#fff}.freelancing-extra{color:#bfc9d5!important;font-size:12px!important;line-height:1.8!important;padding:12px;border:1px solid rgba(255,170,48,.15);border-radius:9px;background:rgba(255,170,48,.035)}.freelancing-btn{border:1px solid #ffaa30;color:#ffaa30;background:rgba(255,170,48,.06);box-shadow:0 0 15px rgba(255,170,48,.08)}.freelancing-btn:hover{background:#ffaa30;color:#000;box-shadow:0 0 25px rgba(255,170,48,.4)}.freelancing-note{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,170,48,.15);color:#8995a4;font-size:12px;line-height:1.7}.freelancing-note strong{color:#ffaa30;font-family:monospace;letter-spacing:1px}
 </style>
 </head>
 <body>
@@ -1517,7 +1517,7 @@ async function handleCartCheckout(e) {
 
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   if (isMobile) {
-    window.location.href = "tel:7206789580";
+    window.location.href = "tel:9910927021";
   } else {
     const emailSubject = encodeURIComponent("purchase request");
     const emailBody = encodeURIComponent(`Hello Cortex Fusion Z,\n\nI want to purchase the following items from my cart:\n${cartSummaryText}\nShipping: ₹99.00 ($1.04)\n\nTotal Amount: ₹${total.toFixed(2)}\n\nCustomer Details:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress/Notes: ${address}`);
@@ -1825,16 +1825,16 @@ const pages = {
       <h3>Phone & Order Hotline</h3>
       <p>Direct line to Founder Haeraksh Arora for purchases, technical collaboration, support and important inquiries.</p>
       <div class="phone-list">
-        <a class="contact-link-btn contact-btn-red" href="tel:+917206789580">📞 +91 72067 89580</a>
+        <a class="contact-link-btn contact-btn-red" href="tel:+919910927021">📞 +91 99109 27021</a>
       </div>
     </div>
-    <div class="contact-card freelapsing-card">
-      <div class="contact-icon freelapsing-icon">🌐</div>
-      <h3>Freelapsing</h3>
+    <div class="contact-card freelancing-card">
+      <div class="contact-icon freelancing-icon">🌐</div>
+      <h3>Free Lancing</h3>
       <p>Want your own professional website? We can help you turn your idea into a modern, responsive and attractive website.</p>
-      <p class="freelapsing-extra">🚀 Personal Portfolio &nbsp; • &nbsp; 💼 Business Website &nbsp; • &nbsp; 🛍️ Online Store &nbsp; • &nbsp; 🤖 AI Website</p>
-      <a class="contact-link-btn freelapsing-btn" href="tel:+917206789580">📞 CALL 7206789580</a>
-      <div class="freelapsing-note"><strong>CREATE YOUR OWN WEBSITE</strong><br>Tell us your idea and let's build something amazing together.</div>
+      <p class="freelancing-extra">🚀 Personal Portfolio &nbsp; • &nbsp; 💼 Business Website &nbsp; • &nbsp; 🛍️ Online Store &nbsp; • &nbsp; 🤖 AI Website</p>
+      <a class="contact-link-btn freelancing-btn" href="tel:+919910927021">📞 CALL 9910927021</a>
+      <div class="freelancing-note"><strong>CREATE YOUR OWN WEBSITE</strong><br>Tell us your idea and let's build something amazing together.</div>
     </div>
   </div>
 </div>${getReviewSectionHTML()}`,
@@ -1848,7 +1848,7 @@ const pages = {
       <div class="carealert-poster-wrap">
         <img src="file_000000000c708211b3057ff008d3c9e5.png" onerror="this.src='file_000000000c708211b3057ff008d3c9e5.png'" alt="CareAlerter Infographic Poster">
         <div style="width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
-          <a class="btn secondary" href="tel:+917206789580" style="width: 100%; text-align: center; padding: 12px; font-size: 13px;">📞 CALL SUPPORT</a>
+          <a class="btn secondary" href="tel:+919910927021" style="width: 100%; text-align: center; padding: 12px; font-size: 13px;">📞 CALL SUPPORT</a>
           <a href="https://www.youtube.com/watch?v=M4GI2CHSBUc" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(0,234,255,0.05);border:1px solid rgba(0,234,255,0.2);padding:10px 12px;border-radius:8px;">▶ how to use the product</a>
         </div>
       </div>
@@ -1896,7 +1896,7 @@ const pages = {
       <div class="carealert-poster-wrap">
         <img src="WhatsApp Image 2026-08-07 at 9.57.03 PM.jpeg" onerror="this.src='WhatsApp Image 2026-08-07 at 9.57.03 PM.jpeg'" alt="AeroRescue AI Infographic Poster">
         <div style="width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
-          <a class="btn secondary" href="tel:+917206789580" style="width: 100%; text-align: center; padding: 12px; font-size: 13px;">📞 CALL SUPPORT</a>
+          <a class="btn secondary" href="tel:+919910927021" style="width: 100%; text-align: center; padding: 12px; font-size: 13px;">📞 CALL SUPPORT</a>
           <a href="https://www.youtube.com/watch?v=Bq2AcxTtaJs" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(0,234,255,0.05);border:1px solid rgba(0,234,255,0.2);padding:10px 12px;border-radius:8px;">▶ how to use the product</a>
         </div>
       </div>
@@ -2305,7 +2305,7 @@ function closeBrahmaEchoOnBackdrop(event){
 function brahmaContactAction(subject, bodyText){
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   if(isMobile){
-    window.location.href = "tel:7206789580";
+    window.location.href = "tel:9910927021";
     setTimeout(() => { showFullscreenPopup(); }, 3000);
   } else {
     const emailSubject = encodeURIComponent(subject);
