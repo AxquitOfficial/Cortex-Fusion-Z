@@ -7,6 +7,9 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="Cortex Fusion Z — Engineering Tomorrow.">
 <title>CORTEX FUSION Z // Engineering Tomorrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -20,17 +23,17 @@
 
 <style>
 :root{
-  --bg:#030507;
-  --panel:rgba(10,15,23,.82);
-  --panel2:rgba(15,20,30,.72);
-  --red:#ff163d;
-  --red2:#ff003c;
-  --cyan:#00eaff;
-  --green:#00ff88;
-  --text:#edf2f7;
-  --muted:#8290a3;
-  --line:rgba(0,234,255,.18);
-  --glow:0 0 28px rgba(255,0,55,.20),0 0 50px rgba(0,234,255,.08);
+  --bg:#0c0906;
+  --panel:rgba(24,18,14,.86);
+  --panel2:rgba(20,15,12,.74);
+  --red:#ff7a1a;
+  --red2:#e85d00;
+  --cyan:#b98cff;
+  --green:#ffd166;
+  --text:#f3ece2;
+  --muted:#a1927f;
+  --line:rgba(185,140,255,.20);
+  --glow:0 0 26px rgba(255,122,26,.20),0 0 50px rgba(185,140,255,.10);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -41,13 +44,13 @@ body{
 body:before{
   content:"";position:fixed;inset:0;z-index:-3;
   background:
-    linear-gradient(rgba(255,22,61,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px);
+    linear-gradient(rgba(255,122,26,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(185,140,255,.035) 1px,transparent 1px);
   background-size:52px 52px;
 }
 body:after{
   content:"";position:fixed;width:600px;height:600px;right:-220px;top:-240px;z-index:-2;
-  background:radial-gradient(circle,rgba(255,0,55,.22),transparent 68%);
+  background:radial-gradient(circle,rgba(255,122,26,.22),transparent 68%);
   filter:blur(30px);pointer-events:none;
 }
 #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.18;pointer-events:none}
@@ -55,7 +58,7 @@ body:after{
 header{
   position:fixed;top:0;left:0;width:100%;z-index:1000;
   background:rgba(3,5,7,.72);backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(0,234,255,.18);
+  border-bottom:1px solid rgba(185,140,255,.18);
 }
 nav{
   max-width:1280px;height:76px;margin:auto;padding:0 24px;
@@ -71,53 +74,53 @@ nav{
 .logo-icon-wrap {
   width: 40px; height: 40px; border-radius: 50%; background: #000;
   border: 1.5px solid var(--red); display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 15px rgba(255,22,61,0.6); overflow: hidden;
+  box-shadow: 0 0 15px rgba(255,122,26,0.6); overflow: hidden;
 }
 .logo-icon-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .logo-text {
   background: linear-gradient(90deg, #ffffff 0%, #b0c2de 50%, var(--cyan) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(0,234,255,0.2);
+  text-shadow: 0 0 20px rgba(185,140,255,0.2);
 }
 .logo-x-badge {
   background: linear-gradient(135deg, var(--red2), #80001d); color: #fff; -webkit-text-fill-color: #fff;
   padding: 2px 9px; border-radius: 6px; font-size: 20px; font-weight: 950;
-  border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 0 18px rgba(255,0,60,0.7);
+  border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 0 18px rgba(232,93,0,0.7);
   display: inline-block; animation: logoPulse 2.5s infinite alternate;
 }
 @keyframes logoPulse {
-  0% { box-shadow: 0 0 12px rgba(255,0,60,0.5); }
-  100% { box-shadow: 0 0 25px rgba(255,0,60,0.9), 0 0 10px var(--cyan); }
+  0% { box-shadow: 0 0 12px rgba(232,93,0,0.5); }
+  100% { box-shadow: 0 0 25px rgba(232,93,0,0.9), 0 0 10px var(--cyan); }
 }
 
 .nav-links{ display:flex; gap:27px; list-style:none; margin: 0 auto; }
 .nav-links a{color:#b8c1cc;text-decoration:none;font-size:13px;letter-spacing:1px;transition:.25s}
-.nav-links a:hover{color:var(--cyan);text-shadow:0 0 12px rgba(0,234,255,.5)}
+.nav-links a:hover{color:var(--cyan);text-shadow:0 0 12px rgba(185,140,255,.5)}
 .signin,.btn{
   border:1px solid var(--red);color:#fff;text-decoration:none;
-  border-radius:7px;padding:11px 19px;background:rgba(255,0,55,.05);
+  border-radius:7px;padding:11px 19px;background:rgba(255,122,26,.05);
   cursor:pointer;transition:.25s;font-weight:800;letter-spacing:.6px;
   display:inline-block; flex-shrink: 0;
 }
-.signin:hover,.primary:hover{background:var(--red);box-shadow:0 0 28px rgba(255,0,55,.45);transform:translateY(-2px)}
+.signin:hover,.primary:hover{background:var(--red);box-shadow:0 0 28px rgba(255,122,26,.45);transform:translateY(-2px)}
 
 .header-cart-btn {
-  background: rgba(0,234,255,0.08); border: 1px solid var(--cyan); color: var(--cyan);
+  background: rgba(185,140,255,0.08); border: 1px solid var(--cyan); color: var(--cyan);
   padding: 10px 16px; border-radius: 7px; cursor: pointer; font-weight: 800;
   display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; text-decoration: none;
   font-size: 13px; letter-spacing: 0.6px; margin-right: 10px;
 }
-.header-cart-btn:hover { background: var(--cyan); color: #000; box-shadow: 0 0 20px rgba(0,234,255,0.4); }
+.header-cart-btn:hover { background: var(--cyan); color: #000; box-shadow: 0 0 20px rgba(185,140,255,0.4); }
 
 /* ===== HUD MOBILE NAV (hamburger) — hidden on laptop, only active <=850px ===== */
 .nav-toggle{
   display:none; width:40px; height:40px; margin-left:10px;
-  border:1px solid var(--cyan); border-radius:7px; background:rgba(0,234,255,.06);
+  border:1px solid var(--cyan); border-radius:7px; background:rgba(185,140,255,.06);
   cursor:pointer; flex-shrink:0; position:relative; z-index:1201;
   align-items:center; justify-content:center; flex-direction:column; gap:5px;
 }
-.nav-toggle span{ display:block; width:19px; height:2px; background:var(--cyan); box-shadow:0 0 6px rgba(0,234,255,.6); transition:.28s; }
-.nav-toggle.active{ border-color:var(--red); background:rgba(255,22,61,.08); }
+.nav-toggle span{ display:block; width:19px; height:2px; background:var(--cyan); box-shadow:0 0 6px rgba(185,140,255,.6); transition:.28s; }
+.nav-toggle.active{ border-color:var(--red); background:rgba(255,122,26,.08); }
 .nav-toggle.active span{ background:var(--red); }
 .nav-toggle.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
 .nav-toggle.active span:nth-child(2){ opacity:0; }
@@ -128,43 +131,43 @@ nav{
 
 .founder-hero-badge {
   display: inline-flex; align-items: center; gap: 12px; margin: 22px 0; padding: 12px 28px;
-  background: linear-gradient(135deg, rgba(0,234,255,0.12), rgba(255,0,60,0.12));
+  background: linear-gradient(135deg, rgba(185,140,255,0.12), rgba(232,93,0,0.12));
   border: 1.5px solid var(--cyan); border-radius: 50px;
-  box-shadow: 0 0 30px rgba(0,234,255,0.25), inset 0 0 15px rgba(0,234,255,0.1);
+  box-shadow: 0 0 30px rgba(185,140,255,0.25), inset 0 0 15px rgba(185,140,255,0.1);
   animation: founderGlow 3s infinite alternate;
 }
 @keyframes founderGlow {
-  0% { border-color: var(--cyan); box-shadow: 0 0 25px rgba(0,234,255,0.3); }
-  100% { border-color: var(--red); box-shadow: 0 0 35px rgba(255,0,60,0.5); }
+  0% { border-color: var(--cyan); box-shadow: 0 0 25px rgba(185,140,255,0.3); }
+  100% { border-color: var(--red); box-shadow: 0 0 35px rgba(232,93,0,0.5); }
 }
 .founder-hero-title { font: 900 13px monospace; letter-spacing: 2.5px; color: var(--muted); }
 .founder-hero-name {
   font: 950 22px monospace; letter-spacing: 3px;
   background: linear-gradient(90deg, #ffffff, var(--cyan), #ffffff);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(0,234,255,0.5);
+  text-shadow: 0 0 20px rgba(185,140,255,0.5);
 }
 
 .hero{ min-height:100vh;padding:145px 22px 90px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative; }
 .hero:before{
-  content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(0,234,255,.12);
-  border-radius:50%;box-shadow:0 0 90px rgba(0,234,255,.08),inset 0 0 90px rgba(255,0,55,.06);
+  content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(185,140,255,.12);
+  border-radius:50%;box-shadow:0 0 90px rgba(185,140,255,.08),inset 0 0 90px rgba(255,122,26,.06);
   animation:pulse 5s infinite ease-in-out;pointer-events:none;
 }
 .hero-content{max-width:980px;position:relative;z-index:1}
 .tag{
-  display:inline-block;border:1px solid rgba(0,234,255,.42);color:var(--cyan);
+  display:inline-block;border:1px solid rgba(185,140,255,.42);color:var(--cyan);
   padding:8px 15px;border-radius:30px;font:700 12px monospace;letter-spacing:2px;
-  background:rgba(0,234,255,.045);box-shadow:0 0 20px rgba(0,234,255,.08);margin-bottom:24px
+  background:rgba(185,140,255,.045);box-shadow:0 0 20px rgba(185,140,255,.08);margin-bottom:24px
 }
 .hero h1{font-size:clamp(58px,10vw,125px);line-height:.86;font-weight:950;letter-spacing:-6px}
-.hero h1 .red{color:var(--red);text-shadow:0 0 45px rgba(255,0,55,.35)}
-.hero h1 .cyan{color:var(--cyan);text-shadow:0 0 45px rgba(0,234,255,.22)}
+.hero h1 .red{color:var(--red);text-shadow:0 0 45px rgba(255,122,26,.35)}
+.hero h1 .cyan{color:var(--cyan);text-shadow:0 0 45px rgba(185,140,255,.22)}
 .hero p{max-width:700px;margin:30px auto;color:#9aa6b5;line-height:1.75;font-size:18px}
 .buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-.primary{background:linear-gradient(135deg,#ff003c,#b8002e);border:none}
-.secondary{border-color:rgba(0,234,255,.4);color:var(--cyan)}
-.secondary:hover{background:rgba(0,234,255,.08);box-shadow:0 0 25px rgba(0,234,255,.18)}
+.primary{background:linear-gradient(135deg,#e85d00,#8a3600);border:none}
+.secondary{border-color:rgba(185,140,255,.4);color:var(--cyan)}
+.secondary:hover{background:rgba(185,140,255,.08);box-shadow:0 0 25px rgba(185,140,255,.18)}
 
 section{padding:105px 6%;position:relative}
 .section-title{text-align:center;margin-bottom:55px}
@@ -178,15 +181,15 @@ section{padding:105px 6%;position:relative}
   border:1px solid rgba(255,255,255,.07);border-radius:15px;box-shadow:var(--glow);
 }
 .card{overflow:hidden;transition:.35s}
-.card:hover{transform:translateY(-9px) rotateX(1deg);border-color:rgba(255,22,61,.55)}
+.card:hover{transform:translateY(-9px) rotateX(1deg);border-color:rgba(255,122,26,.55)}
 .product-image{
   height:205px;display:flex;align-items:center;justify-content:center;font-size:76px;
   background:
-   radial-gradient(circle at center,rgba(255,0,55,.22),transparent 48%),
-   radial-gradient(circle at 75% 25%,rgba(0,234,255,.12),transparent 35%),#06090d;
+   radial-gradient(circle at center,rgba(255,122,26,.22),transparent 48%),
+   radial-gradient(circle at 75% 25%,rgba(185,140,255,.12),transparent 35%),#06090d;
   position:relative;
 }
-.product-image:after{content:"";position:absolute;inset:15px;border:1px solid rgba(0,234,255,.10);border-radius:10px}
+.product-image:after{content:"";position:absolute;inset:15px;border:1px solid rgba(185,140,255,.10);border-radius:10px}
 .card-content{padding:24px}
 .card-content h3{font-size:21px;margin-bottom:10px}
 .card-content p{color:#8793a2;line-height:1.65;margin-bottom:12px}
@@ -196,14 +199,14 @@ section{padding:105px 6%;position:relative}
 
 .stats{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .stat{text-align:center;padding:32px}
-.stat h3{font-size:43px;color:var(--red);text-shadow:0 0 20px rgba(255,0,55,.25)}
+.stat h3{font-size:43px;color:var(--red);text-shadow:0 0 20px rgba(255,122,26,.25)}
 .stat p{color:#748092;margin-top:8px}
 
-.cta{max-width:1100px;margin:auto;padding:78px 25px;text-align:center;border:1px solid rgba(255,0,55,.32);border-radius:22px;background:radial-gradient(circle,rgba(255,0,55,.13),transparent 62%),#080a0e;box-shadow:0 0 70px rgba(255,0,55,.06)}
+.cta{max-width:1100px;margin:auto;padding:78px 25px;text-align:center;border:1px solid rgba(255,122,26,.32);border-radius:22px;background:radial-gradient(circle,rgba(255,122,26,.13),transparent 62%),#080a0e;box-shadow:0 0 70px rgba(255,122,26,.06)}
 .cta h2{font-size:45px;margin-bottom:17px}
 .cta p{color:#8995a4;max-width:650px;margin:0 auto 28px;line-height:1.7}
 
-footer{padding:50px 6%;border-top:1px solid rgba(0,234,255,.12);background:#020304}
+footer{padding:50px 6%;border-top:1px solid rgba(185,140,255,.12);background:#020304}
 .footer-content{max-width:1220px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
 .footer-logo{font-size:24px;font-weight:950;letter-spacing:2px}.footer-logo span{color:var(--red)}
 footer p{color:#5f6b79;margin-top:8px}
@@ -212,7 +215,7 @@ footer p{color:#5f6b79;margin-top:8px}
 .toast{
   position:fixed;right:20px;bottom:20px;z-index:3000;
   background:#081018;border:1px solid var(--cyan);color:var(--cyan);
-  padding:16px 22px;border-radius:10px;box-shadow:0 0 35px rgba(0,234,255,.3);
+  padding:16px 22px;border-radius:10px;box-shadow:0 0 35px rgba(185,140,255,.3);
   font:700 13px/1.5 monospace;display:none;max-width:420px;white-space:pre-line;
 }
 
@@ -281,13 +284,14 @@ footer p{color:#5f6b79;margin-top:8px}
   max-width: 900px; width: 100%; padding: 25px;
   background: linear-gradient(145deg, rgba(16,22,31,0.98), rgba(5,8,12,0.98));
   border: 1.5px solid var(--cyan); border-radius: 20px;
-  box-shadow: 0 0 60px rgba(0,234,255,0.35); text-align: left; position: relative;
-  max-height: 92vh; overflow-y: auto;
+  box-shadow: 0 0 60px rgba(185,140,255,0.35); text-align: left; position: relative;
+  max-height: 92vh; overflow-y: auto; overflow-x: hidden;
+  box-sizing: border-box;
 }
 .cyber-modal-tag {
   display: inline-block; font: 800 11px monospace; letter-spacing: 2px;
-  color: var(--cyan); background: rgba(0,234,255,0.08); padding: 5px 14px;
-  border-radius: 20px; border: 1px solid rgba(0,234,255,0.3); margin-bottom: 12px;
+  color: var(--cyan); background: rgba(185,140,255,0.08); padding: 5px 14px;
+  border-radius: 20px; border: 1px solid rgba(185,140,255,0.3); margin-bottom: 12px;
 }
 .cyber-modal-title { font: 950 22px monospace; color: #fff; letter-spacing: 1.5px; margin-bottom: 6px; }
 .cyber-modal-sub { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
@@ -305,46 +309,51 @@ footer p{color:#5f6b79;margin-top:8px}
 .cart-flipkart-card {
   background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px; padding: 15px; margin-bottom: 15px; display: flex; flex-direction: column; gap: 12px;
+  max-width: 100%; overflow: hidden;
 }
 .cart-item-top {
-  display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap;
 }
-.cart-item-title { font-weight: 900; color: #fff; font-size: 15px; }
+.cart-item-top > div:first-child{ min-width: 0; flex: 1 1 auto; }
+.cart-item-title { font-weight: 900; color: #fff; font-size: 15px; overflow-wrap: anywhere; word-break: break-word; }
 .cart-item-price { font-weight: 900; color: var(--green); font-size: 15px; margin-top: 4px; }
 .cart-item-actions {
-  display: flex; gap: 15px; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; font-size: 13px;
+  display: flex; gap: 12px; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; font-size: 13px;
+  flex-wrap: wrap; row-gap: 8px;
 }
 .cart-action-btn {
   background: none; border: none; color: var(--muted); cursor: pointer; font-weight: 700; transition: 0.2s;
+  white-space: nowrap; flex-shrink: 0; margin-left: auto; padding: 4px 0;
 }
 .cart-action-btn:hover { color: var(--red); }
 .qty-select {
-  background: #020509; border: 1px solid rgba(0,234,255,0.3); color: #fff; padding: 4px 8px; border-radius: 4px; font-weight: bold; outline: none;
+  background: #020509; border: 1px solid rgba(185,140,255,0.3); color: #fff; padding: 4px 8px; border-radius: 4px; font-weight: bold; outline: none;
+  flex-shrink: 0; max-width: 100px;
 }
 
 .checkout-sidebar {
-  background: rgba(0,234,255,0.03); border: 1px solid rgba(0,234,255,0.2);
+  background: rgba(185,140,255,0.03); border: 1px solid rgba(185,140,255,0.2);
   border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 14px; height: fit-content;
 }
-.checkout-summary-title { font: 900 13px monospace; color: var(--cyan); letter-spacing: 1px; border-bottom: 1px solid rgba(0,234,255,0.2); padding-bottom: 6px; }
+.checkout-summary-title { font: 900 13px monospace; color: var(--cyan); letter-spacing: 1px; border-bottom: 1px solid rgba(185,140,255,0.2); padding-bottom: 6px; }
 .checkout-line { display: flex; justify-content: space-between; font: 13px monospace; }
 .checkout-line.total { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-weight: 900; color: var(--green); font-size: 15px; }
 
 .form-group { margin-bottom: 10px; }
 .form-group label { display: block; font: 800 10px monospace; color: var(--muted); margin-bottom: 4px; }
 .form-group input, .form-group textarea {
-  width: 100%; background: #020509; border: 1px solid rgba(0,234,255,0.3);
+  width: 100%; background: #020509; border: 1px solid rgba(185,140,255,0.3);
   color: #fff; padding: 8px 10px; border-radius: 6px; outline: none; font-size: 12px;
 }
-.form-group input:focus, .form-group textarea:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,234,255,0.3); }
+.form-group input:focus, .form-group textarea:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(185,140,255,0.3); }
 
 .cyber-modal-btn {
   width: 100%; padding: 12px; border: none; border-radius: 8px;
   background: linear-gradient(135deg, var(--red2), #80001d);
   color: #fff; font: 900 13px monospace; letter-spacing: 1.5px;
-  cursor: pointer; box-shadow: 0 0 25px rgba(255,0,60,0.5); transition: 0.3s; margin-top: 5px; text-align: center;
+  cursor: pointer; box-shadow: 0 0 25px rgba(232,93,0,0.5); transition: 0.3s; margin-top: 5px; text-align: center;
 }
-.cyber-modal-btn:hover { box-shadow: 0 0 35px rgba(255,0,60,0.8); }
+.cyber-modal-btn:hover { box-shadow: 0 0 35px rgba(232,93,0,0.8); }
 .close-modal-x { position: absolute; right: 20px; top: 20px; cursor: pointer; color: var(--muted); font: 900 18px monospace; }
 
 /* ASK CORTEX FLOATING DECORATIVE WIDGET */
@@ -357,14 +366,14 @@ footer p{color:#5f6b79;margin-top:8px}
   user-select: none;
 }
 .cortex-floating-btn {
-  background: linear-gradient(135deg, rgba(0,234,255,0.2), rgba(255,0,60,0.2));
+  background: linear-gradient(135deg, rgba(185,140,255,0.2), rgba(232,93,0,0.2));
   border: 1.5px solid var(--cyan);
   color: #fff;
   padding: 12px 20px;
   border-radius: 30px;
   font: 900 13px monospace;
   letter-spacing: 1.5px;
-  box-shadow: 0 0 25px rgba(0,234,255,0.3), inset 0 0 10px rgba(0,234,255,0.2);
+  box-shadow: 0 0 25px rgba(185,140,255,0.3), inset 0 0 10px rgba(185,140,255,0.2);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -372,7 +381,7 @@ footer p{color:#5f6b79;margin-top:8px}
 }
 .cortex-floating-btn:hover {
   border-color: var(--red);
-  box-shadow: 0 0 35px rgba(255,0,60,0.5), inset 0 0 15px rgba(255,0,60,0.3);
+  box-shadow: 0 0 35px rgba(232,93,0,0.5), inset 0 0 15px rgba(232,93,0,0.3);
   transform: scale(1.05);
 }
 .cortex-chat-box {
@@ -383,19 +392,19 @@ footer p{color:#5f6b79;margin-top:8px}
   background: linear-gradient(145deg, rgba(16,22,31,0.98), rgba(5,8,12,0.98));
   border: 1.5px solid var(--cyan);
   border-radius: 16px;
-  box-shadow: 0 0 40px rgba(0,234,255,0.3);
+  box-shadow: 0 0 40px rgba(185,140,255,0.3);
   display: none;
   flex-direction: column;
   overflow: hidden;
   animation: popupZoom 0.2s ease-out;
 }
 .cortex-chat-header {
-  background: rgba(0,234,255,0.1);
+  background: rgba(185,140,255,0.1);
   padding: 12px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0,234,255,0.2);
+  border-bottom: 1px solid rgba(185,140,255,0.2);
   font: 900 12px monospace;
   color: var(--cyan);
   letter-spacing: 1px;
@@ -418,8 +427,8 @@ footer p{color:#5f6b79;margin-top:8px}
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 .cortex-option-btn {
-  background: rgba(0,234,255,0.05);
-  border: 1px solid rgba(0,234,255,0.2);
+  background: rgba(185,140,255,0.05);
+  border: 1px solid rgba(185,140,255,0.2);
   color: var(--cyan);
   padding: 8px 12px;
   border-radius: 8px;
@@ -431,18 +440,18 @@ footer p{color:#5f6b79;margin-top:8px}
 .cortex-option-btn:hover {
   background: var(--cyan);
   color: #000;
-  box-shadow: 0 0 15px rgba(0,234,255,0.4);
+  box-shadow: 0 0 15px rgba(185,140,255,0.4);
 }
 .cortex-msg-bot {
-  background: rgba(0,234,255,0.08);
-  border: 1px solid rgba(0,234,255,0.15);
+  background: rgba(185,140,255,0.08);
+  border: 1px solid rgba(185,140,255,0.15);
   padding: 10px 12px;
   border-radius: 8px;
   line-height: 1.5;
 }
 .cortex-msg-user {
-  background: rgba(255,0,60,0.08);
-  border: 1px solid rgba(255,0,60,0.2);
+  background: rgba(232,93,0,0.08);
+  border: 1px solid rgba(232,93,0,0.2);
   padding: 10px 12px;
   border-radius: 8px;
   color: #fff;
@@ -455,9 +464,9 @@ footer p{color:#5f6b79;margin-top:8px}
   margin-top: 40px;
   padding: 30px;
   background: linear-gradient(145deg, rgba(16,22,31,.92), rgba(5,8,12,.92));
-  border: 1px solid rgba(0,234,255,.25);
+  border: 1px solid rgba(185,140,255,.25);
   border-radius: 18px;
-  box-shadow: 0 0 35px rgba(0,234,255,.08);
+  box-shadow: 0 0 35px rgba(185,140,255,.08);
 }
 .reviews-header {
   display: flex;
@@ -491,7 +500,7 @@ footer p{color:#5f6b79;margin-top:8px}
 }
 .review-card {
   background: rgba(255,255,255,.025);
-  border: 1px solid rgba(0,234,255,.15);
+  border: 1px solid rgba(185,140,255,.15);
   border-radius: 12px;
   padding: 18px;
   margin-bottom: 16px;
@@ -543,7 +552,7 @@ footer p{color:#5f6b79;margin-top:8px}
 .admin-reply-form input {
   flex: 1;
   background: #020509;
-  border: 1px solid rgba(0,234,255,0.3);
+  border: 1px solid rgba(185,140,255,0.3);
   color: #fff;
   padding: 8px 12px;
   border-radius: 6px;
@@ -562,7 +571,7 @@ footer p{color:#5f6b79;margin-top:8px}
 }
 .admin-reply-btn:hover {
   background: #fff;
-  box-shadow: 0 0 15px rgba(0,234,255,.5);
+  box-shadow: 0 0 15px rgba(185,140,255,.5);
 }
 
 @keyframes pulse{50%{transform:scale(1.07);opacity:.65}}
@@ -577,11 +586,11 @@ footer p{color:#5f6b79;margin-top:8px}
    margin:0; padding:96px 26px 30px; overflow-y:auto; z-index:1100;
    background:linear-gradient(165deg,rgba(8,12,18,.98),rgba(3,5,7,.99));
    border-left:1px solid var(--cyan);
-   box-shadow:-10px 0 50px rgba(0,0,0,.6), inset 0 0 40px rgba(0,234,255,.04);
+   box-shadow:-10px 0 50px rgba(0,0,0,.6), inset 0 0 40px rgba(185,140,255,.04);
    transition:right .32s cubic-bezier(.4,0,.2,1);
  }
  .nav-links.active{ right:0; }
- .nav-links li{ border-bottom:1px solid rgba(0,234,255,.12); }
+ .nav-links li{ border-bottom:1px solid rgba(185,140,255,.12); }
  .nav-links a{
    display:block; padding:16px 4px; font-size:15px; letter-spacing:1.5px;
    font-weight:800; color:#dbe4ee;
@@ -598,26 +607,26 @@ footer p{color:#5f6b79;margin-top:8px}
 .page h1 span{color:var(--red)}
 .intro{max-width:760px;color:var(--muted);font-size:18px;line-height:1.7;margin-bottom:45px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.info{padding:30px;border:1px solid rgba(0,234,255,.2);border-radius:15px;background:linear-gradient(145deg,rgba(16,22,31,.88),rgba(5,8,12,.88));box-shadow:var(--glow)}
+.info{padding:30px;border:1px solid rgba(185,140,255,.2);border-radius:15px;background:linear-gradient(145deg,rgba(16,22,31,.88),rgba(5,8,12,.88));box-shadow:var(--glow)}
 .info h2{color:var(--cyan);margin-bottom:12px}.info p{color:#8d99a7;line-height:1.7}
 
 .contact-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:20px}
-.contact-card{padding:32px;border:1px solid rgba(0,234,255,.25);border-radius:18px;background:linear-gradient(145deg,rgba(16,22,31,.92),rgba(5,8,12,.92));box-shadow:0 0 30px rgba(0,234,255,.05);transition:.3s}
-.contact-card:hover{border-color:var(--cyan);box-shadow:0 0 35px rgba(0,234,255,.18);transform:translateY(-5px)}
-.contact-card-red:hover{border-color:var(--red);box-shadow:0 0 35px rgba(255,22,61,.22)}
-.contact-icon{width:55px;height:55px;border-radius:12px;display:grid;place-items:center;font-size:26px;margin-bottom:20px;background:rgba(0,234,255,.08);border:1px solid rgba(0,234,255,.2);color:var(--cyan)}
-.contact-icon-red{background:rgba(255,22,61,.08);border-color:rgba(255,22,61,.3);color:var(--red)}
+.contact-card{padding:32px;border:1px solid rgba(185,140,255,.25);border-radius:18px;background:linear-gradient(145deg,rgba(16,22,31,.92),rgba(5,8,12,.92));box-shadow:0 0 30px rgba(185,140,255,.05);transition:.3s}
+.contact-card:hover{border-color:var(--cyan);box-shadow:0 0 35px rgba(185,140,255,.18);transform:translateY(-5px)}
+.contact-card-red:hover{border-color:var(--red);box-shadow:0 0 35px rgba(255,122,26,.22)}
+.contact-icon{width:55px;height:55px;border-radius:12px;display:grid;place-items:center;font-size:26px;margin-bottom:20px;background:rgba(185,140,255,.08);border:1px solid rgba(185,140,255,.2);color:var(--cyan)}
+.contact-icon-red{background:rgba(255,122,26,.08);border-color:rgba(255,122,26,.3);color:var(--red)}
 .contact-card h3{font-size:22px;margin-bottom:8px}
 .contact-card p{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.6}
 .contact-link-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;font:800 13px monospace;text-decoration:none;transition:.25s}
-.contact-btn-cyan{border:1px solid var(--cyan);color:var(--cyan);background:rgba(0,234,255,.05)}
-.contact-btn-cyan:hover{background:var(--cyan);color:#000;box-shadow:0 0 20px rgba(0,234,255,.4)}
-.contact-btn-red{border:1px solid var(--red);color:var(--red);background:rgba(255,22,61,.05)}
-.contact-btn-red:hover{background:var(--red);color:#fff;box-shadow:0 0 20px rgba(255,22,61,.5)}
+.contact-btn-cyan{border:1px solid var(--cyan);color:var(--cyan);background:rgba(185,140,255,.05)}
+.contact-btn-cyan:hover{background:var(--cyan);color:#000;box-shadow:0 0 20px rgba(185,140,255,.4)}
+.contact-btn-red{border:1px solid var(--red);color:var(--red);background:rgba(255,122,26,.05)}
+.contact-btn-red:hover{background:var(--red);color:#fff;box-shadow:0 0 20px rgba(255,122,26,.5)}
 .phone-list{display:flex;flex-direction:column;gap:12px;margin-top:10px}
 
 .auth-wrap{min-height:100vh;display:grid;place-items:center;padding:120px 20px}
-.auth-card{width:min(460px,100%);padding:38px;background:linear-gradient(145deg,rgba(16,22,31,.94),rgba(5,8,12,.94));border:1px solid rgba(255,22,61,.45);border-radius:18px;box-shadow:0 0 50px rgba(255,0,55,.12)}
+.auth-card{width:min(460px,100%);padding:38px;background:linear-gradient(145deg,rgba(16,22,31,.94),rgba(5,8,12,.94));border:1px solid rgba(255,122,26,.45);border-radius:18px;box-shadow:0 0 50px rgba(255,122,26,.12)}
 .auth-card h1{font-size:38px;margin:10px 0}.auth-card h1 span{color:var(--red)}.auth-card p{color:var(--muted);line-height:1.6;margin-bottom:24px}
 .auth-card input{width:100%;margin-bottom:14px;background:#020407;border:1px solid #263241;color:#fff;padding:12px;border-radius:6px;outline:none}
 .auth-btn{width:100%;padding:13px;border:0;border-radius:6px;background:var(--red);color:#fff;font-weight:900;cursor:pointer}
@@ -626,13 +635,13 @@ footer p{color:#5f6b79;margin-top:8px}
 .auth-tabs{display:flex;gap:8px;margin-bottom:28px}.auth-tab{flex:1;padding:11px;border:1px solid #293441;background:#070b10;color:#7e8b9b;border-radius:5px;font-weight:900;cursor:pointer}.auth-tab.active{background:var(--red);color:#fff;border-color:var(--red)}
 .password-wrap{display:flex;gap:6px;margin-bottom:14px}.password-wrap input{margin:0!important;flex:1}.show-pass{width:58px;border:1px solid #263241;background:#101820;color:var(--cyan);border-radius:6px;cursor:pointer;font:11px monospace;font-weight:900}
 .auth-footer{display:flex;justify-content:space-between;gap:15px;margin-top:22px}.auth-footer a{color:var(--cyan);text-decoration:none;font-size:12px}
-.social-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.social-links a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(0,234,255,.16);border-radius:7px;color:#9aa8b7;text-decoration:none;font:800 11px monospace;letter-spacing:1px;transition:.2s;background:rgba(0,234,255,.02)}.social-links a:hover{color:#fff;border-color:var(--cyan);box-shadow:0 0 20px rgba(0,234,255,.12);transform:translateY(-2px)}
+.social-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.social-links a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(185,140,255,.16);border-radius:7px;color:#9aa8b7;text-decoration:none;font:800 11px monospace;letter-spacing:1px;transition:.2s;background:rgba(185,140,255,.02)}.social-links a:hover{color:#fff;border-color:var(--cyan);box-shadow:0 0 20px rgba(185,140,255,.12);transform:translateY(-2px)}
 
 .field-error{display:block;color:#ff5470;font:700 11px monospace;letter-spacing:.3px;margin:-9px 0 12px;min-height:14px}
 .auth-divider{display:flex;align-items:center;gap:12px;margin:22px 0 16px;color:var(--muted);font:800 11px monospace;letter-spacing:1.5px}
 .auth-divider:before,.auth-divider:after{content:"";flex:1;height:1px;background:rgba(255,255,255,.1)}
-.google-auth-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border:1px solid rgba(0,234,255,.28);background:rgba(0,234,255,.04);color:#fff;border-radius:6px;font:800 13px Arial,sans-serif;cursor:pointer;transition:.25s;letter-spacing:.4px}
-.google-auth-btn:hover{background:rgba(0,234,255,.1);border-color:var(--cyan);box-shadow:0 0 20px rgba(0,234,255,.15);transform:translateY(-1px)}
+.google-auth-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border:1px solid rgba(185,140,255,.28);background:rgba(185,140,255,.04);color:#fff;border-radius:6px;font:800 13px Arial,sans-serif;cursor:pointer;transition:.25s;letter-spacing:.4px}
+.google-auth-btn:hover{background:rgba(185,140,255,.1);border-color:var(--cyan);box-shadow:0 0 20px rgba(185,140,255,.15);transform:translateY(-1px)}
 .google-g-icon{width:18px;height:18px;flex-shrink:0}
 
 
@@ -640,13 +649,13 @@ footer p{color:#5f6b79;margin-top:8px}
 .profile-card{
   padding:35px 22px;text-align:center;
   background:linear-gradient(145deg,rgba(16,22,31,.95),rgba(5,8,12,.95));
-  border:1px solid rgba(0,234,255,.3);border-radius:22px;
-  box-shadow:0 0 45px rgba(0,234,255,.12), inset 0 0 25px rgba(0,234,255,.03);
+  border:1px solid rgba(185,140,255,.3);border-radius:22px;
+  box-shadow:0 0 45px rgba(185,140,255,.12), inset 0 0 25px rgba(185,140,255,.03);
   position:relative;overflow:hidden;
 }
 .profile-card:before{
   content:"";position:absolute;top:-50px;left:-50px;width:120px;height:120px;
-  background:radial-gradient(circle,rgba(0,234,255,.3),transparent 70%);
+  background:radial-gradient(circle,rgba(185,140,255,.3),transparent 70%);
   pointer-events:none;
 }
 .profile-avatar-ontainer{
@@ -657,7 +666,7 @@ footer p{color:#5f6b79;margin-top:8px}
   position:absolute;inset:0;border-radius:50%;
   border:2px dashed var(--cyan);
   animation:ringSpin 18s linear infinite;
-  box-shadow:0 0 20px rgba(0,234,255,.3);
+  box-shadow:0 0 20px rgba(185,140,255,.3);
 }
 @keyframes ringSpin{100%{transform:rotate(360deg)}}
 
@@ -665,17 +674,17 @@ footer p{color:#5f6b79;margin-top:8px}
   width:145px;height:145px;border-radius:50%;
   border:2px solid var(--red);display:grid;place-items:center;
   background:#071018;color:var(--cyan);font-size:42px;font-weight:900;
-  overflow:hidden;box-shadow:0 0 25px rgba(255,22,61,.3);
+  overflow:hidden;box-shadow:0 0 25px rgba(255,122,26,.3);
   position:relative;z-index:2;
 }
 .profile-photo img{width:100%;height:100%;object-fit:cover}
 .profile-upload{
   display:inline-block!important;width:auto!important;padding:9px 16px!important;
-  font:800 11px monospace;letter-spacing:1px;background:rgba(0,234,255,.06);
+  font:800 11px monospace;letter-spacing:1px;background:rgba(185,140,255,.06);
   border:1px solid var(--cyan);color:var(--cyan);border-radius:20px;
-  cursor:pointer;transition:.3s;box-shadow:0 0 15px rgba(0,234,255,.15);
+  cursor:pointer;transition:.3s;box-shadow:0 0 15px rgba(185,140,255,.15);
 }
-.profile-upload:hover{background:var(--cyan);color:#000;box-shadow:0 0 25px rgba(0,234,255,.4)}
+.profile-upload:hover{background:var(--cyan);color:#000;box-shadow:0 0 25px rgba(185,140,255,.4)}
 
 .cyber-badge-container{display:flex;flex-direction:column;gap:8px;margin-top:22px;}
 .cyber-badge{
@@ -687,8 +696,8 @@ footer p{color:#5f6b79;margin-top:8px}
 
 .profile-form-panel{
   padding:35px;background:linear-gradient(145deg,rgba(16,22,31,.92),rgba(5,8,12,.92));
-  border:1px solid rgba(255,22,61,.3);border-radius:22px;
-  box-shadow:0 0 50px rgba(255,0,55,.1);
+  border:1px solid rgba(255,122,26,.3);border-radius:22px;
+  box-shadow:0 0 50px rgba(255,122,26,.1);
 }
 .profile-form-panel h2{
   font-size:24px;letter-spacing:2px;color:var(--cyan);
@@ -700,42 +709,42 @@ footer p{color:#5f6b79;margin-top:8px}
   color:var(--muted);margin-bottom:8px;
 }
 .profile-field-group input{
-  width:100%;background:#020509;border:1px solid rgba(0,234,255,.25);
+  width:100%;background:#020509;border:1px solid rgba(185,140,255,.25);
   color:#fff;padding:13px 16px;border-radius:8px;outline:none;
   font:14px Arial,sans-serif;transition:.3s;
 }
 .profile-field-group input:focus{
-  border-color:var(--cyan);box-shadow:0 0 18px rgba(0,234,255,.25);
+  border-color:var(--cyan);box-shadow:0 0 18px rgba(185,140,255,.25);
 }
 .profile-btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:28px;}
 .save-profile-btn{
-  padding:13px;background:linear-gradient(135deg,#ff003c,#b8002e);
+  padding:13px;background:linear-gradient(135deg,#e85d00,#8a3600);
   border:none;color:#fff;font:900 12px monospace;letter-spacing:1px;
   border-radius:8px;cursor:pointer;transition:.3s;
-  box-shadow:0 0 20px rgba(255,0,60,.6);transform:translateY(-2px)
+  box-shadow:0 0 20px rgba(232,93,0,.6);transform:translateY(-2px)
 }
 .logout-btn{
-  padding:13px;border:1px solid var(--red);background:rgba(255,22,61,.05);
+  padding:13px;border:1px solid var(--red);background:rgba(255,122,26,.05);
   color:var(--red);font:900 12px monospace;letter-spacing:1px;
   cursor:pointer;border-radius:8px;transition:.3s;
 }
-.logout-btn:hover{background:var(--red);color:#fff;box-shadow:0 0 25px rgba(255,22,61,.4)}
+.logout-btn:hover{background:var(--red);color:#fff;box-shadow:0 0 25px rgba(255,122,26,.4)}
 #welcome-preview{margin-top:14px;color:#fff;font-weight:900;font-size:20px;letter-spacing:1px}
-.welcome-user{display:inline-block;padding:9px 14px;margin-bottom:22px;border:1px solid rgba(0,234,255,.35);border-radius:5px;color:var(--cyan);font:12px monospace;background:rgba(0,234,255,.04)}
+.welcome-user{display:inline-block;padding:9px 14px;margin-bottom:22px;border:1px solid rgba(185,140,255,.35);border-radius:5px;color:var(--cyan);font:12px monospace;background:rgba(185,140,255,.04)}
 @media(max-width:750px){.profile-layout{grid-template-columns:1fr}.auth-footer{flex-direction:column}}
 .carealert-hero-card{
   max-width:1050px;margin:0 auto 25px;padding:65px 35px;text-align:center;
-  background: radial-gradient(circle at 50% 35%,rgba(255,22,61,.18),transparent 42%),
+  background: radial-gradient(circle at 50% 35%,rgba(255,122,26,.18),transparent 42%),
               linear-gradient(145deg,rgba(16,22,31,.94),rgba(5,8,12,.96));
-  border:1px solid rgba(255,22,61,.45);border-radius:22px;
-  box-shadow:0 0 70px rgba(255,0,55,.10),inset 0 0 50px rgba(0,234,255,.025);
+  border:1px solid rgba(255,122,26,.45);border-radius:22px;
+  box-shadow:0 0 70px rgba(255,122,26,.10),inset 0 0 50px rgba(185,140,255,.025);
   position:relative;overflow:hidden;
 }
 .carealert-hero-card:before{
-  content:"";position:absolute;inset:14px;border:1px solid rgba(0,234,255,.10);
+  content:"";position:absolute;inset:14px;border:1px solid rgba(185,140,255,.10);
   border-radius:15px;pointer-events:none;
 }
-.carealert-icon{font-size:85px;filter:drop-shadow(0 0 20px rgba(255,0,55,.45))}
+.carealert-icon{font-size:85px;filter:drop-shadow(0 0 20px rgba(255,122,26,.45))}
 .author-badge{
   display:inline-block;margin-top:15px;padding:8px 18px;border:1.5px solid var(--cyan);
   border-radius:25px;color:var(--cyan);font:900 12px monospace;letter-spacing:1px;
@@ -743,12 +752,12 @@ footer p{color:#5f6b79;margin-top:8px}
 .product-media-card{
   max-width:1050px;margin:0 auto 25px;padding:45px;
   background:linear-gradient(145deg,rgba(16,22,31,.92),rgba(5,8,12,.92));
-  border:1px solid rgba(0,234,255,.2);border-radius:20px;
-  box-shadow:0 0 40px rgba(0,234,255,.05);
+  border:1px solid rgba(185,140,255,.2);border-radius:20px;
+  box-shadow:0 0 40px rgba(185,140,255,.05);
 }
 .price-box{
   display:flex;align-items:center;justify-content:space-between;
-  padding:20px;background:rgba(0,234,255,.04);border:1px dashed var(--cyan);
+  padding:20px;background:rgba(185,140,255,.04);border:1px dashed var(--cyan);
   border-radius:12px;margin-top:20px;flex-wrap:wrap;gap:15px;
 }
 .price-value{font:950 28px monospace;color:var(--green);text-shadow:0 0 15px rgba(0,255,136,.3)}
@@ -756,7 +765,7 @@ footer p{color:#5f6b79;margin-top:8px}
 .doc-list li{position:relative;padding-left:22px;margin-bottom:12px;color:#b0bccb;line-height:1.6}
 .doc-list li:before{content:"⚡";position:absolute;left:0;color:var(--cyan)}
 .tech-pill-container{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
-.tech-pill{padding:8px 14px;background:rgba(0,234,255,.08);border:1px solid rgba(0,234,255,.3);border-radius:20px;color:var(--cyan);font:800 12px monospace}
+.tech-pill{padding:8px 14px;background:rgba(185,140,255,.08);border:1px solid rgba(185,140,255,.3);border-radius:20px;color:var(--cyan);font:800 12px monospace}
 
 /* FIXED CAREALERT SIDE-BY-SIDE LAYOUT */
 .carealert-split-grid {
@@ -772,7 +781,7 @@ footer p{color:#5f6b79;margin-top:8px}
   border-radius: 20px;
   overflow: hidden;
   border: 2px solid var(--red);
-  box-shadow: 0 0 40px rgba(255,0,55,0.3);
+  box-shadow: 0 0 40px rgba(255,122,26,0.3);
   background: #000;
   display: flex;
   flex-direction: column;
@@ -857,13 +866,13 @@ footer p{color:#5f6b79;margin-top:8px}
   position:absolute;left:20px;top:16px;
   display:inline-flex;align-items:center;gap:7px;
   padding:9px 14px;border-radius:10px;
-  border:1px solid rgba(0,234,255,.4);
-  background:rgba(0,234,255,.06);
-  color:#00eaff;font:800 11px monospace;letter-spacing:.6px;
+  border:1px solid rgba(185,140,255,.4);
+  background:rgba(185,140,255,.06);
+  color:#b98cff;font:800 11px monospace;letter-spacing:.6px;
   cursor:pointer;text-decoration:none;transition:.25s;
   z-index:2;
 }
-.brahma-guide-btn:hover{background:#00eaff;color:#000;box-shadow:0 0 20px rgba(0,234,255,.4);transform:translateY(-1px)}
+.brahma-guide-btn:hover{background:#b98cff;color:#000;box-shadow:0 0 20px rgba(185,140,255,.4);transform:translateY(-1px)}
 @media(max-width:600px){
   .brahma-guide-btn{position:static;margin-bottom:14px;justify-content:center;width:100%}
 }
@@ -930,9 +939,9 @@ footer p{color:#5f6b79;margin-top:8px}
 }
 .brahma-plan-btn:hover{background:#ffaa30;color:#000;box-shadow:0 0 22px rgba(255,170,48,.35)}
 .brahma-demo-btn{
-  border-color:#00eaff;color:#00eaff;background:rgba(0,234,255,.05);
+  border-color:#b98cff;color:#b98cff;background:rgba(185,140,255,.05);
 }
-.brahma-demo-btn:hover{background:#00eaff;box-shadow:0 0 22px rgba(0,234,255,.35)}
+.brahma-demo-btn:hover{background:#b98cff;box-shadow:0 0 22px rgba(185,140,255,.35)}
 
 @media(max-width:900px){
   .brahma-plans{grid-template-columns:1fr}
@@ -952,16 +961,16 @@ footer p{color:#5f6b79;margin-top:8px}
   display:inline-flex;align-items:center;gap:10px;
   padding:13px 20px;border-radius:30px;
   border:1px solid var(--cyan);
-  background:linear-gradient(135deg,rgba(0,234,255,.16),rgba(255,0,60,.16));
+  background:linear-gradient(135deg,rgba(185,140,255,.16),rgba(232,93,0,.16));
   color:#fff;text-decoration:none;
   font:900 12px monospace;letter-spacing:1px;
-  box-shadow:0 0 28px rgba(0,234,255,.22);
+  box-shadow:0 0 28px rgba(185,140,255,.22);
   transition:.25s;
 }
 .feedback-float:hover{
   transform:translateY(-3px) scale(1.03);
   background:var(--cyan);color:#000;
-  box-shadow:0 0 35px rgba(0,234,255,.5);
+  box-shadow:0 0 35px rgba(185,140,255,.5);
 }
 @media(max-width:600px){
   .feedback-float{right:15px;bottom:18px;padding:11px 16px;font-size:11px}
@@ -1028,6 +1037,31 @@ footer p{color:#5f6b79;margin-top:8px}
   .cart-items-column{max-height:290px}
 }
 
+/* ===== CART — PERFECT PHONE FIT ===== */
+@media(max-width:600px){
+  .cyber-modal-overlay{padding:8px}
+  .cyber-modal-card{padding:18px 14px 20px;border-radius:14px;max-height:94vh}
+  .close-modal-x{top:14px;right:14px;font-size:16px;z-index:2}
+  .cyber-modal-tag{font-size:10px;padding:4px 10px;max-width:calc(100% - 34px)}
+  .cyber-modal-title{font-size:18px;padding-right:28px}
+  .cyber-modal-sub{font-size:12px;margin-bottom:14px}
+  .cart-items-column{max-height:250px}
+  .cart-flipkart-card{padding:12px;gap:10px;margin-bottom:12px}
+  .cart-item-title{font-size:14px}
+  .cart-item-price{font-size:14px}
+  .cart-item-actions{gap:10px;font-size:12px}
+  .checkout-sidebar{padding:14px;gap:12px}
+  .checkout-summary-title{font-size:12px}
+  .checkout-line{font-size:12px}
+  .checkout-line.total{font-size:14px}
+  .form-group input,.form-group textarea{font-size:16px;padding:9px 10px}
+}
+@media(max-width:380px){
+  .cyber-modal-card{padding:16px 12px 18px}
+  .cart-item-actions{row-gap:10px}
+  .qty-select{max-width:80px}
+}
+
 @media(max-width:420px){
   nav{padding:0 12px;height:60px}
   .logo-text{display:none}
@@ -1044,10 +1078,25 @@ footer p{color:#5f6b79;margin-top:8px}
 }
 
 /* CLEAN MOBILE NAVIGATION */
-@media(max-width:850px){nav{height:68px;padding:0 14px}.nav-toggle{display:flex;width:44px;height:44px;margin-left:8px;border-radius:9px;flex-shrink:0}.nav-toggle span{width:21px;height:2px}.nav-links{display:flex;flex-direction:column;align-items:stretch;gap:0;position:fixed;top:68px;left:0;right:auto;width:100%;max-width:none;height:calc(100vh - 68px);margin:0;padding:12px 18px 35px;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:1100;background:linear-gradient(180deg,rgba(5,9,14,.99),rgba(3,5,7,.99));border-left:0;border-top:1px solid rgba(0,234,255,.25);box-shadow:0 15px 40px rgba(0,0,0,.55);transform:translateX(100%);transition:transform .28s ease}.nav-links.active{transform:translateX(0)}.nav-overlay,.nav-overlay.active{display:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:transparent!important}.nav-links li{border-bottom:1px solid rgba(0,234,255,.12)}.nav-links a{display:flex;align-items:center;min-height:58px;padding:16px 8px;font-size:16px;letter-spacing:1.4px;font-weight:800;color:#e8eef5}.nav-links a:hover{color:var(--cyan);padding-left:14px}.nav-links .brahma-nav-btn{display:flex;align-items:center;min-height:58px;padding:16px 8px;margin:0}.nav-links-mobile-only{display:block}.hero{padding:115px 18px 70px}.hero h1{letter-spacing:-3px}}
+@media(max-width:850px){nav{height:68px;padding:0 14px}.nav-toggle{display:flex;width:44px;height:44px;margin-left:8px;border-radius:9px;flex-shrink:0}.nav-toggle span{width:21px;height:2px}.nav-links{display:flex;flex-direction:column;align-items:stretch;gap:0;position:fixed;top:68px;left:0;right:auto;width:100%;max-width:none;height:calc(100vh - 68px);margin:0;padding:12px 18px 35px;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:1100;background:linear-gradient(180deg,rgba(5,9,14,.99),rgba(3,5,7,.99));border-left:0;border-top:1px solid rgba(185,140,255,.25);box-shadow:0 15px 40px rgba(0,0,0,.55);transform:translateX(100%);transition:transform .28s ease}.nav-links.active{transform:translateX(0)}.nav-overlay,.nav-overlay.active{display:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:transparent!important}.nav-links li{border-bottom:1px solid rgba(185,140,255,.12)}.nav-links a{display:flex;align-items:center;min-height:58px;padding:16px 8px;font-size:16px;letter-spacing:1.4px;font-weight:800;color:#e8eef5}.nav-links a:hover{color:var(--cyan);padding-left:14px}.nav-links .brahma-nav-btn{display:flex;align-items:center;min-height:58px;padding:16px 8px;margin:0}.nav-links-mobile-only{display:block}.hero{padding:115px 18px 70px}.hero h1{letter-spacing:-3px}}
 @media(max-width:600px){nav{height:64px;padding:0 12px}.nav-links{top:64px;height:calc(100vh - 64px);padding:8px 15px 30px}.nav-links a,.nav-links .brahma-nav-btn{min-height:56px;padding:15px 8px;font-size:15px}.nav-toggle{width:42px;height:42px}.header-cart-btn{padding:8px 10px;margin-right:4px}.signin{padding:9px 11px;font-size:11px}}
 @media(max-width:420px){nav{padding:0 9px}.logo-text{display:none}.logo{gap:6px}.logo-icon-wrap{width:32px;height:32px}.logo-x-badge{margin-left:0;padding:1px 6px;font-size:15px}.header-cart-btn{padding:7px 9px}.signin{padding:8px 9px;font-size:10px}.nav-toggle{margin-left:5px;width:40px;height:40px}}
 .freelancing-card{position:relative;overflow:hidden;border:1px solid rgba(255,170,48,.35);background:radial-gradient(circle at 90% 10%,rgba(255,170,48,.14),transparent 38%),linear-gradient(145deg,rgba(20,18,14,.94),rgba(5,8,12,.96))}.freelancing-card:hover{border-color:#ffaa30;box-shadow:0 0 35px rgba(255,170,48,.22),inset 0 0 25px rgba(255,170,48,.04);transform:translateY(-7px)}.freelancing-icon{color:#ffaa30;background:rgba(255,170,48,.08);border-color:rgba(255,170,48,.3);box-shadow:0 0 20px rgba(255,170,48,.12)}.freelancing-card h3{color:#fff}.freelancing-extra{color:#bfc9d5!important;font-size:12px!important;line-height:1.8!important;padding:12px;border:1px solid rgba(255,170,48,.15);border-radius:9px;background:rgba(255,170,48,.035)}.freelancing-btn{border:1px solid #ffaa30;color:#ffaa30;background:rgba(255,170,48,.06);box-shadow:0 0 15px rgba(255,170,48,.08)}.freelancing-btn:hover{background:#ffaa30;color:#000;box-shadow:0 0 25px rgba(255,170,48,.4)}.freelancing-note{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,170,48,.15);color:#8995a4;font-size:12px;line-height:1.7}.freelancing-note strong{color:#ffaa30;font-family:monospace;letter-spacing:1px}
+
+/* ===== THEME OVERRIDE: SOLAR FORGE (typography + angular shape) ===== */
+body{font-family:'Work Sans',Arial,sans-serif}
+body h1,body h2,body h3,.logo-text,.logo-x-badge,.cyber-modal-title,.brahma-modal-title,
+.founder-hero-name,.section-title h2,.cta h2,.auth-card h1,.brahma-demo-title{
+  font-family:'Fraunces',serif!important;font-weight:600;
+}
+.tag,.section-title small,.founder-hero-title,.checkout-summary-title,.cyber-modal-tag,
+.stat h3,.price-value,.welcome-user,.tech-pill,.brahma-nav-btn,.header-cart-btn,.qty-select,
+.cart-item-price,.form-group label{font-family:'Work Sans',sans-serif!important;letter-spacing:.8px}
+.card,.panel,.stat,.cyber-modal-card,.brahma-modal-card,.auth-card,.contact-card,.info,
+.profile-card,.profile-form-panel{border-radius:3px}
+.btn,.signin,.header-cart-btn{border-radius:2px}
+.hero h1{letter-spacing:-2px}
+
 </style>
 </head>
 <body>
@@ -1258,7 +1307,7 @@ footer p{color:#5f6b79;margin-top:8px}
       </div>
     </div>
   </div>
-  <div style="max-width:1220px;margin:28px auto 0;padding-top:22px;border-top:1px solid rgba(0,234,255,.10);text-align:center;color:#5f6b79;font-size:12.5px;letter-spacing:.3px;">
+  <div style="max-width:1220px;margin:28px auto 0;padding-top:22px;border-top:1px solid rgba(185,140,255,.10);text-align:center;color:#5f6b79;font-size:12.5px;letter-spacing:.3px;">
     © 2026 CORTEX FUSION Z. Founded by Haeraksh Arora. All rights reserved.
   </div>
 </footer>
@@ -1667,16 +1716,16 @@ function getJoinCortexHTML() {
       <a class="btn primary" href="#profile" style="background:linear-gradient(135deg,var(--green),#00b359); color:#000; box-shadow:0 0 20px rgba(0,255,136,.4); font-size:1rem; padding:12px 28px;">HEAD TO PERSONALISATION →</a>
     </div>`;
   }
-  return `<div style="text-align:center;padding:40px 30px;margin-top:25px;border:2px solid var(--red);border-radius:22px;background:linear-gradient(135deg,rgba(255,0,60,.12),rgba(0,0,0,.85));box-shadow:0 0 25px rgba(255,0,60,.35), inset 0 0 20px rgba(255,0,60,.08);position:relative;overflow:hidden">
-<div style="position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(255,0,60,.18),transparent 45%);pointer-events:none"></div>
-<h3 style="font-size:2rem;color:var(--red);letter-spacing:2px;margin-bottom:10px;text-shadow:0 0 12px rgba(255,0,60,.7)">🚀 JOIN CORTEX FUSION Z</h3>
+  return `<div style="text-align:center;padding:40px 30px;margin-top:25px;border:2px solid var(--red);border-radius:22px;background:linear-gradient(135deg,rgba(232,93,0,.12),rgba(0,0,0,.85));box-shadow:0 0 25px rgba(232,93,0,.35), inset 0 0 20px rgba(232,93,0,.08);position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(232,93,0,.18),transparent 45%);pointer-events:none"></div>
+<h3 style="font-size:2rem;color:var(--red);letter-spacing:2px;margin-bottom:10px;text-shadow:0 0 12px rgba(232,93,0,.7)">🚀 JOIN CORTEX FUSION Z</h3>
 <p style="color:#fff;font-size:1.05rem;max-width:700px;margin:0 auto 18px">Become part of an elite AI community and unlock premium projects, source code, updates, early releases and exclusive innovations.</p>
 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:20px">
 <span style="padding:8px 14px;border:1px solid var(--red);border-radius:999px;color:#fff">⚡ Premium Access</span>
 <span style="padding:8px 14px;border:1px solid var(--red);border-radius:999px;color:#fff">🤖 AI Projects</span>
 <span style="padding:8px 14px;border:1px solid var(--red);border-radius:999px;color:#fff">🔒 Members Only</span>
 </div>
-<a class="btn primary" href="#signin" style="font-size:1.05rem;padding:14px 30px;box-shadow:0 0 20px rgba(255,0,60,.5)">✨ SIGN UP →</a>
+<a class="btn primary" href="#signin" style="font-size:1.05rem;padding:14px 30px;box-shadow:0 0 20px rgba(232,93,0,.5)">✨ SIGN UP →</a>
 </div>`;
 }
 
@@ -1692,7 +1741,7 @@ function loadHomeProducts() {
           <h3>CareAlerter</h3>
           <p style="font-weight:bold;color:var(--cyan);font-size:12px;margin-bottom:4px;">Founder: Haeraksh Arora</p>
           <p style="font-weight:800;color:var(--green);font-size:13px;margin-bottom:8px;">₹1000 ($10.50)</p>
-          <div style="margin-bottom:12px;background:rgba(0,234,255,0.05);border:1px solid rgba(0,234,255,0.2);padding:8px 12px;border-radius:8px;"><a href="https://www.youtube.com/watch?v=M4GI2CHSBUc" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;gap:6px;">▶ how to use the product</a></div>
+          <div style="margin-bottom:12px;background:rgba(185,140,255,0.05);border:1px solid rgba(185,140,255,0.2);padding:8px 12px;border-radius:8px;"><a href="https://www.youtube.com/watch?v=M4GI2CHSBUc" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;gap:6px;">▶ how to use the product</a></div>
           <p>An Intelligent Emergency Alert System designed to identify emergency situations.</p>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;">
             <a class="card-link" href="#carealert">VIEW MODULE →</a>
@@ -1706,7 +1755,7 @@ function loadHomeProducts() {
           <h3>Aerospace Disaster Rescue System</h3>
           <p style="font-weight:bold;color:var(--cyan);font-size:12px;margin-bottom:4px;">Founder: Haeraksh Arora</p>
           <p style="font-weight:800;color:var(--green);font-size:13px;margin-bottom:8px;">₹600 ($6.30)</p>
-          <div style="margin-bottom:12px;background:rgba(0,234,255,0.05);border:1px solid rgba(0,234,255,0.2);padding:8px 12px;border-radius:8px;"><a href="https://www.youtube.com/watch?v=Bq2AcxTtaJs" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;gap:6px;">▶ how to use the product</a></div>
+          <div style="margin-bottom:12px;background:rgba(185,140,255,0.05);border:1px solid rgba(185,140,255,0.2);padding:8px 12px;border-radius:8px;"><a href="https://www.youtube.com/watch?v=Bq2AcxTtaJs" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;gap:6px;">▶ how to use the product</a></div>
           <p>AeroRescue AI - An Intelligent Aerospace Rescue System powered by YOLO AI and Computer Vision.</p>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;">
             <a class="card-link" href="#aerorescue">VIEW MODULE →</a>
@@ -1721,9 +1770,9 @@ function loadHomeProducts() {
 }
 
 const pages = {
-  home: `<section class="hero"><div class="hero-content"><div class="tag">[ NEXT-GENERATION ENGINEERING PLATFORM ]</div><div><div class="founder-hero-badge"><div class="founder-hero-title">⚡ FOUNDER & LEAD ENGINEER:</div><div class="founder-hero-name">HAERAKSH ARORA</div></div></div><h1>BUILD.<br><span class="red">CREATE.</span><br><span class="cyan">INNOVATE.</span></h1><p>Cortex Fusion Z brings robotics, artificial intelligence, electronics, and engineering into one futuristic technology hub founded by Haeraksh Arora.</p><div class="buttons"><a class="btn primary" href="#products">EXPLORE PRODUCTS</a><a class="btn secondary profile-home" href="#profile">MY PROFILE</a></div></div></section><section><div class="section-title"><small>CORTEX FUSION Z ECOSYSTEM</small><h2>Featured Innovations</h2><p>Explore our latest products fetching live from our backend.</p></div><div class="products" id="home-products-container"><p style="color:var(--muted);text-align:center;">Loading products...</p></div></section><section><div class="section-title"><small>CORE INITIATIVE</small><h2>Future IoT</h2><p>Discover the next evolutionary wave of interconnected smart infrastructure.</p></div><div style="max-width:1050px;margin:auto;padding:45px 35px;background:linear-gradient(145deg,rgba(16,22,31,.92),rgba(5,8,12,.92));border:1.5px solid var(--cyan);border-radius:20px;box-shadow:0 0 50px rgba(0,234,255,.1);"><h3 style="font:900 24px monospace;color:var(--cyan);margin-bottom:12px;">📡 DEVELOPED BY IOT CORTEX</h3><p style="color:#b0bccb;line-height:1.8;margin-bottom:15px;">Future IoT delivers automated telemetry, real-time edge processing, and multi-sensor connectivity built directly into the Cortex Fusion Z ecosystem.</p><p style="color:#b0bccb;line-height:1.8;margin-bottom:15px;">By implementing ultra-low power microcontroller nodes combined with mesh networking protocols, our architecture ensures seamless data transmission across sprawling industrial and residential deployments.</p><p style="color:#b0bccb;line-height:1.8;margin-bottom:20px;">Experience uninterrupted uptime, automated anomaly diagnostics, and centralized cloud synchronization engineered for the next decade of intelligent environments.</p><a class="btn primary" href="#futureiot">EXPLORE FUTURE IOT →</a></div></section>${getJoinCortexHTML()}${getReviewSectionHTML()}`,
+  home: `<section class="hero"><div class="hero-content"><div class="tag">[ NEXT-GENERATION ENGINEERING PLATFORM ]</div><div><div class="founder-hero-badge"><div class="founder-hero-title">⚡ FOUNDER & LEAD ENGINEER:</div><div class="founder-hero-name">HAERAKSH ARORA</div></div></div><h1>BUILD.<br><span class="red">CREATE.</span><br><span class="cyan">INNOVATE.</span></h1><p>Cortex Fusion Z brings robotics, artificial intelligence, electronics, and engineering into one futuristic technology hub founded by Haeraksh Arora.</p><div class="buttons"><a class="btn primary" href="#products">EXPLORE PRODUCTS</a><a class="btn secondary profile-home" href="#profile">MY PROFILE</a></div></div></section><section><div class="section-title"><small>CORTEX FUSION Z ECOSYSTEM</small><h2>Featured Innovations</h2><p>Explore our latest products fetching live from our backend.</p></div><div class="products" id="home-products-container"><p style="color:var(--muted);text-align:center;">Loading products...</p></div></section><section><div class="section-title"><small>CORE INITIATIVE</small><h2>Future IoT</h2><p>Discover the next evolutionary wave of interconnected smart infrastructure.</p></div><div style="max-width:1050px;margin:auto;padding:45px 35px;background:linear-gradient(145deg,rgba(16,22,31,.92),rgba(5,8,12,.92));border:1.5px solid var(--cyan);border-radius:20px;box-shadow:0 0 50px rgba(185,140,255,.1);"><h3 style="font:900 24px monospace;color:var(--cyan);margin-bottom:12px;">📡 DEVELOPED BY IOT CORTEX</h3><p style="color:#b0bccb;line-height:1.8;margin-bottom:15px;">Future IoT delivers automated telemetry, real-time edge processing, and multi-sensor connectivity built directly into the Cortex Fusion Z ecosystem.</p><p style="color:#b0bccb;line-height:1.8;margin-bottom:15px;">By implementing ultra-low power microcontroller nodes combined with mesh networking protocols, our architecture ensures seamless data transmission across sprawling industrial and residential deployments.</p><p style="color:#b0bccb;line-height:1.8;margin-bottom:20px;">Experience uninterrupted uptime, automated anomaly diagnostics, and centralized cloud synchronization engineered for the next decade of intelligent environments.</p><a class="btn primary" href="#futureiot">EXPLORE FUTURE IOT →</a></div></section>${getJoinCortexHTML()}${getReviewSectionHTML()}`,
   products: `<div class="page"><div class="tag">CORTEX FUSION Z // PRODUCT CATALOG</div><h1>Active <span>Innovations.</span></h1><p class="intro">Explore hardware modules, AI emergency dispatch units, and software packages built by Founder Haeraksh Arora.</p><div class="products" id="home-products-container"></div></div>${getReviewSectionHTML()}`,
-  futureiot: `<div class="page"><div class="tag">CORTEX FUSION Z // IOT CORTEX ARCHITECTURE</div><h1>Future <span>IoT.</span></h1><p class="intro">Developed by Iot Cortex — Pioneering the next generation of smart sensor networks, automated telemetry, and connected infrastructure.</p><div class="carealert-hero-card" style="border-color:var(--cyan);box-shadow:0 0 70px rgba(0,234,255,.15);"><div class="carealert-icon">📡</div><h2>FUTURE IOT</h2><div class="author-badge" style="border-color:var(--cyan);color:var(--cyan);background:rgba(0,234,255,.08);">⚡ DEVELOPED BY IOT CORTEX</div><p style="margin-top:14px;font-weight:bold;color:var(--muted);">Advanced Interconnected Device & Telemetry Architecture</p><div class="buttons care-buttons" style="margin-top:25px"><a class="btn secondary" href="#home">← BACK TO HOME</a><a class="btn primary" href="#products">EXPLORE PRODUCTS</a></div></div>
+  futureiot: `<div class="page"><div class="tag">CORTEX FUSION Z // IOT CORTEX ARCHITECTURE</div><h1>Future <span>IoT.</span></h1><p class="intro">Developed by Iot Cortex — Pioneering the next generation of smart sensor networks, automated telemetry, and connected infrastructure.</p><div class="carealert-hero-card" style="border-color:var(--cyan);box-shadow:0 0 70px rgba(185,140,255,.15);"><div class="carealert-icon">📡</div><h2>FUTURE IOT</h2><div class="author-badge" style="border-color:var(--cyan);color:var(--cyan);background:rgba(185,140,255,.08);">⚡ DEVELOPED BY IOT CORTEX</div><p style="margin-top:14px;font-weight:bold;color:var(--muted);">Advanced Interconnected Device & Telemetry Architecture</p><div class="buttons care-buttons" style="margin-top:25px"><a class="btn secondary" href="#home">← BACK TO HOME</a><a class="btn primary" href="#products">EXPLORE PRODUCTS</a></div></div>
 
 <div class="product-media-card">
   <h2 style="color:var(--cyan);margin-bottom:15px;font-family:monospace;">// COMPREHENSIVE SYSTEM OVERVIEW</h2>
@@ -1766,7 +1815,7 @@ const pages = {
   <h1>Engineering <span>Tomorrow.</span></h1>
   <p class="intro">Cortex Fusion Z stands at the absolute vanguard of next-generation technological convergence, seamlessly uniting advanced software engineering, robust hardware architecture, artificial intelligence, machine learning pipelines, and smart embedded device ecosystems into a singular, cohesive powerhouse.</p>
   
-  <div class="info" style="margin-bottom:28px; border-color:var(--cyan); box-shadow: 0 0 30px rgba(0,234,255,0.2);">
+  <div class="info" style="margin-bottom:28px; border-color:var(--cyan); box-shadow: 0 0 30px rgba(185,140,255,0.2);">
     <h2 style="font-size:28px; font-weight:950; letter-spacing:2px; color:var(--cyan);">⚡ FOUNDER & VISIONARY: HAERAKSH ARORA</h2>
     <p style="font-size:16px; line-height:1.8; color:#d1dce5; margin-bottom: 14px;">Cortex Fusion Z was conceptualized, meticulously architected, and independently founded from the ground up by <strong>Haeraksh Arora</strong>, a dedicated young engineer, visionary full-stack developer, and pioneering technological innovator committed to transforming the landscape of modern automated hardware systems and intelligent software solutions.</p>
     <p style="font-size:15px; line-height:1.8; color:#a2b2c3; margin-bottom: 14px;">Under Haeraksh Arora's direct leadership, every core module, firmware loop, user interface interaction, and cloud telemetry pipeline has been rigorously stress-tested to meet the highest benchmarks of industrial resilience, low-latency responsiveness, and user-centric design elegance.</p>
@@ -1849,7 +1898,7 @@ const pages = {
         <img src="file_000000000c708211b3057ff008d3c9e5.png" onerror="this.src='file_000000000c708211b3057ff008d3c9e5.png'" alt="CareAlerter Infographic Poster">
         <div style="width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
           <a class="btn secondary" href="tel:+919910927021" style="width: 100%; text-align: center; padding: 12px; font-size: 13px;">📞 CALL SUPPORT</a>
-          <a href="https://www.youtube.com/watch?v=M4GI2CHSBUc" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(0,234,255,0.05);border:1px solid rgba(0,234,255,0.2);padding:10px 12px;border-radius:8px;">▶ how to use the product</a>
+          <a href="https://www.youtube.com/watch?v=M4GI2CHSBUc" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(185,140,255,0.05);border:1px solid rgba(185,140,255,0.2);padding:10px 12px;border-radius:8px;">▶ how to use the product</a>
         </div>
       </div>
       <div>
@@ -1871,7 +1920,7 @@ const pages = {
               <button class="btn primary" onclick="addToCart('CareAlerter', 1000)" style="padding:10px 14px;font-size:12px;">ADD TO CART</button>
             </div>
           </div>
-          <div style="margin-top: 25px; border-top: 1px solid rgba(0,234,255,0.2); padding-top: 20px;">
+          <div style="margin-top: 25px; border-top: 1px solid rgba(185,140,255,0.2); padding-top: 20px;">
             <h3 style="color: var(--cyan); font-family: monospace; font-size: 16px; margin-bottom: 12px;">// PROJECT DOCUMENTATION & SPECIFICATIONS</h3>
             <div style="color: #b0bccb; font-size: 13px; line-height: 1.7;">
               <p style="margin-bottom: 8px;"><strong style="color: #fff;">1. Introduction:</strong> CareAlert is a software-based emergency alert system designed to identify possible emergency situations and provide quick alerts.</p>
@@ -1897,7 +1946,7 @@ const pages = {
         <img src="WhatsApp Image 2026-08-07 at 9.57.03 PM.jpeg" onerror="this.src='WhatsApp Image 2026-08-07 at 9.57.03 PM.jpeg'" alt="AeroRescue AI Infographic Poster">
         <div style="width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
           <a class="btn secondary" href="tel:+919910927021" style="width: 100%; text-align: center; padding: 12px; font-size: 13px;">📞 CALL SUPPORT</a>
-          <a href="https://www.youtube.com/watch?v=Bq2AcxTtaJs" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(0,234,255,0.05);border:1px solid rgba(0,234,255,0.2);padding:10px 12px;border-radius:8px;">▶ how to use the product</a>
+          <a href="https://www.youtube.com/watch?v=Bq2AcxTtaJs" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(185,140,255,0.05);border:1px solid rgba(185,140,255,0.2);padding:10px 12px;border-radius:8px;">▶ how to use the product</a>
         </div>
       </div>
       <div>
@@ -1919,7 +1968,7 @@ const pages = {
               <button class="btn primary" onclick="addToCart('AeroRescue AI', 600)" style="padding:10px 14px;font-size:12px;">ADD TO CART</button>
             </div>
           </div>
-          <div style="margin-top: 25px; border-top: 1px solid rgba(0,234,255,0.2); padding-top: 20px;">
+          <div style="margin-top: 25px; border-top: 1px solid rgba(185,140,255,0.2); padding-top: 20px;">
             <h3 style="color: var(--cyan); font-family: monospace; font-size: 16px; margin-bottom: 12px;">// PROJECT DOCUMENTATION & SPECIFICATIONS</h3>
             <div style="color: #b0bccb; font-size: 13px; line-height: 1.7;">
               <p style="margin-bottom: 8px;"><strong style="color: #fff;">1. Introduction:</strong> AeroRescue AI is a software-based aerospace rescue project. It uses Artificial Intelligence to detect people from a camera or video feed and helps monitor a rescue mission.</p>
@@ -2271,7 +2320,7 @@ const chars="01CORTEXFUSIONZ<>[]{}ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 setInterval(()=>{
   ctx.fillStyle="rgba(3,5,7,.055)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="#00eaff";
+  ctx.fillStyle="#b98cff";
   ctx.font="12px monospace";
   for(let i=0;i<drops.length;i++){
     const text=chars[Math.floor(Math.random()*chars.length)];
