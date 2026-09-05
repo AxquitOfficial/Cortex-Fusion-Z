@@ -658,7 +658,7 @@ footer p{color:#5f6b79;margin-top:8px}
   background:radial-gradient(circle,rgba(185,140,255,.3),transparent 70%);
   pointer-events:none;
 }
-.profile-avatar-ontainer{
+.profile-avatar-container{
   position:relative;width:170px;height:170px;margin:0 auto 22px;
   display:grid;place-items:center;
 }
@@ -1558,6 +1558,13 @@ async function handleCartCheckout(e) {
     console.error("EmailJS dispatch error:", err);
   }
 
+  const purchasingUser = getUser();
+  if (purchasingUser && purchasingUser.loggedIn) {
+    const itemsBought = cart.reduce((sum, item) => sum + item.quantity, 0);
+    purchasingUser.purchaseCount = (purchasingUser.purchaseCount || 0) + itemsBought;
+    setUser(purchasingUser);
+  }
+
   submitBtn.disabled = false;
   submitBtn.textContent = "CONTINUE TO PURCHASE →";
   closeCyberBuyModal();
@@ -1985,7 +1992,7 @@ const pages = {
     </div>
   </div>${getReviewSectionHTML()}`,
   signin: `<div class="auth-wrap"><div class="auth-card"><div class="auth-tabs"><button class="auth-tab active" data-auth="login">LOG IN</button><button class="auth-tab" data-auth="signup">SIGN UP</button></div><div id="login-box"><div class="tag">[ CORTEX FUSION Z IDENTITY SYSTEM ]</div><h1>Welcome <span>Back.</span></h1><p>Log in to access your Cortex Fusion Z profile.</p><form id="login"><label>USERNAME OR EMAIL</label><input id="login-id" type="text" placeholder="Username or email" required><label>PASSWORD</label><div class="password-wrap"><input id="login-password" type="password" placeholder="••••••••" required><button type="button" class="show-pass" onclick="togglePass('login-password')">SHOW</button></div><button type="submit" class="auth-btn">LOG IN →</button></form><div class="auth-divider"><span>OR</span></div><div class="google-btn-shell"><button type="button" class="google-auth-btn" id="login-google-btn"><svg class="google-g-icon" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>Continue with Google</button><div id="google-login-overlay" class="google-gis-overlay"></div></div></div><div id="signup-box" style="display:none"><div class="tag">[ CORTEX FUSION Z IDENTITY SYSTEM ]</div><h1>Create <span>Account.</span></h1><p>Join Cortex Fusion Z today.</p><form id="signup"><label>USERNAME</label><input id="sig-user" type="text" placeholder="Username" required><label>EMAIL</label><input id="sig-email" type="email" placeholder="name@example.com" required><small id="sig-email-err" class="field-error"></small><label>PHONE NUMBER</label><input id="sig-phone" type="tel" placeholder="10-digit mobile number" maxlength="10" required><small id="sig-phone-err" class="field-error"></small><label>PASSWORD</label><div class="password-wrap"><input id="sig-password" type="password" placeholder="••••••••" required><button type="button" class="show-pass" onclick="togglePass('sig-password')">SHOW</button></div><label>RETYPE PASSWORD</label><div class="password-wrap"><input id="sig-password2" type="password" placeholder="••••••••" required><button type="button" class="show-pass" onclick="togglePass('sig-password2')">SHOW</button></div><small id="sig-password-err" class="field-error"></small><button type="submit" class="auth-btn">JOIN NOW →</button></form><div class="auth-divider"><span>OR</span></div><div class="google-btn-shell"><button type="button" class="google-auth-btn" id="signup-google-btn"><svg class="google-g-icon" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>Sign up with Google</button><div id="google-signup-overlay" class="google-gis-overlay"></div></div></div><div id="auth-msg" class="auth-msg"></div></div></div>`,
-  profile: `<div class="page"><div class="tag">CORTEX FUSION Z // PERSONALIZATION HUB</div><h1>User <span>Profile.</span></h1><p class="intro">Manage your personal details, custom avatar, and personalized network settings.</p><div class="profile-layout"><div class="profile-card"><div class="profile-avatar-container"><div class="profile-avatar-ring"></div><div id="profile-photo-preview" class="profile-photo">CFX</div></div><label class="custom-file profile-upload" for="profile-photo">📷 CHANGE AVATAR</label><input id="profile-photo" type="file" accept="image/*" style="display:none"><div id="welcome-preview" class="welcome-preview">Welcome User</div><div class="cyber-badge-container"><div class="cyber-badge">STATUS: <span>ONLINE 🟢</span></div><div class="cyber-badge">CLEARANCE: <span style="color:var(--cyan)">LEVEL ALPHA ⚡</span></div></div></div><div class="profile-form-panel"><h2><span>⚡</span> EDIT IDENTITY SETTINGS</h2><div class="profile-field-group"><label>// USERNAME</label><input id="profile-username" type="text" placeholder="Username"></div><div class="profile-field-group"><label>// EMAIL ADDRESS</label><input id="profile-email" type="email" placeholder="Email"></div><div class="profile-field-group"><label>// PHONE NUMBER</label><input id="profile-phone" type="tel" placeholder="+91..."></div><div class="profile-btn-grid"><button id="save-profile" class="save-profile-btn" type="button">SAVE PERSONALIZATION</button><button id="logout" class="logout-btn" type="button">LOG OUT</button></div><div id="profile-msg" class="auth-msg"></div></div></div></div>`
+  profile: `<div class="page"><div class="tag">CORTEX FUSION Z // PERSONALIZATION HUB</div><h1>User <span>Profile.</span></h1><p class="intro">Manage your personal details, custom avatar, and personalized network settings.</p><div class="profile-layout"><div class="profile-card"><div class="profile-avatar-container"><div class="profile-avatar-ring"></div><div id="profile-photo-preview" class="profile-photo">CFX</div></div><label class="custom-file profile-upload" for="profile-photo">📷 CHANGE AVATAR</label><input id="profile-photo" type="file" accept="image/*" style="display:none"><div id="welcome-preview" class="welcome-preview">Welcome User</div><div class="cyber-badge-container"><div class="cyber-badge">STATUS: <span>ONLINE 🟢</span></div><div class="cyber-badge">CLEARANCE: <span id="profile-level-badge" style="color:var(--cyan)">LEVEL ROOKIE 🔰</span></div><div class="cyber-badge">PURCHASES: <span id="profile-purchase-count">0</span></div></div></div><div class="profile-form-panel"><h2><span>⚡</span> EDIT IDENTITY SETTINGS</h2><div class="profile-field-group"><label>// USERNAME</label><input id="profile-username" type="text" placeholder="Username"></div><div class="profile-field-group"><label>// EMAIL ADDRESS</label><input id="profile-email" type="email" placeholder="Email"></div><div class="profile-field-group"><label>// PHONE NUMBER</label><input id="profile-phone" type="tel" placeholder="+91..."></div><div class="profile-btn-grid"><button id="save-profile" class="save-profile-btn" type="button">SAVE PERSONALIZATION</button><button id="logout" class="logout-btn" type="button">LOG OUT</button></div><div id="profile-msg" class="auth-msg"></div></div></div></div>`
 };
 
 function esc(str){return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -2233,6 +2240,14 @@ function completeGoogleSignIn(email, name, picture){
 }
 
 
+function getLevelInfo(purchaseCount){
+  purchaseCount = purchaseCount || 0;
+  if(purchaseCount >= 10) return {name:"LEVEL OMEGA", emoji:"🛡️", color:"#ff4d4d"};
+  if(purchaseCount >= 5)  return {name:"LEVEL PRIME", emoji:"🚀", color:"var(--green)"};
+  if(purchaseCount >= 1)  return {name:"LEVEL ALPHA", emoji:"⚡", color:"var(--cyan)"};
+  return {name:"LEVEL ROOKIE", emoji:"🔰", color:"var(--muted)"};
+}
+
 function initProfile(){
   const u=getUser();
   if(!u||!u.loggedIn){
@@ -2253,6 +2268,13 @@ function initProfile(){
   if(pIn) pIn.value=u.phone||"";
   if(prev) prev.textContent="Welcome "+(u.username||"User");
   if(u.photo&&pPhoto) pPhoto.innerHTML=`<img src="${u.photo}" alt="Avatar">`;
+
+  const levelBadge=document.getElementById("profile-level-badge");
+  const purchaseBadge=document.getElementById("profile-purchase-count");
+  const purchaseCount=u.purchaseCount||0;
+  const lvl=getLevelInfo(purchaseCount);
+  if(levelBadge){ levelBadge.textContent=`${lvl.name} ${lvl.emoji}`; levelBadge.style.color=lvl.color; }
+  if(purchaseBadge) purchaseBadge.textContent=purchaseCount;
 
   if(fileIn) fileIn.onchange=(e)=>{
     const file=e.target.files[0];
